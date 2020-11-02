@@ -1,0 +1,1037 @@
+{
+  "contractName": "StampProofs",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "hash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "stampProof",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "hash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "setProof",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.4.25+commit.59dbf8f1\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"hash\",\"type\":\"bytes32\"}],\"name\":\"setProof\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"hash\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"stampProof\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"contracts/proofs/StampProofs.sol\":\"StampProofs\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/proofs/StampProofs.sol\":{\"keccak256\":\"0x25522ad9f5a53e3dfde8f33ce35fccc20d37561041221759ae50bfa6de5a917b\",\"urls\":[\"bzzr://d12efac36198d19cd0a3cd9468051a27690156edba2ee382a8b50850a4051483\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060dd8061001f6000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063ebe90e43146044575b600080fd5b348015604f57600080fd5b50607060048036038101908080356000191690602001909291905050506072565b005b80600019167f6181541c791b3ff0c14a905aceeaf7811eab817d5e33bf538cfe6303cfae6372426040518082815260200191505060405180910390a2505600a165627a7a723058207534c8919e03b176d1a1fd3b922c1f6537070bd073c772d70ba5480950d2f3ec0029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063ebe90e43146044575b600080fd5b348015604f57600080fd5b50607060048036038101908080356000191690602001909291905050506072565b005b80600019167f6181541c791b3ff0c14a905aceeaf7811eab817d5e33bf538cfe6303cfae6372426040518082815260200191505060405180910390a2505600a165627a7a723058207534c8919e03b176d1a1fd3b922c1f6537070bd073c772d70ba5480950d2f3ec0029",
+  "sourceMap": "26:307:44:-;;;173:23;8:9:-1;5:2;;;30:1;27;20:12;5:2;173:23:44;26:307;;;;;;",
+  "deployedSourceMap": "26:307:44:-;;;;;;;;;;;;;;;;;;;;;;;;202:128;;8:9:-1;5:2;;;30:1;27;20:12;5:2;202:128:44;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;301:4;290:33;;;;307:15;290:33;;;;;;;;;;;;;;;;;;202:128;:::o",
+  "source": "pragma solidity ^0.4.25;\n\ncontract StampProofs {\n    // mapping(uint256 => bytes32) private stampProofs;\n    event stampProof(bytes32 indexed hash, uint256 timestamp);\n\n    constructor() public {}\n\n    function setProof(bytes32 hash) public{\n        // stampProofs[id] = hash;\n        emit stampProof(hash, block.timestamp);\n    } \n}",
+  "sourcePath": "contracts/proofs/StampProofs.sol",
+  "ast": {
+    "absolutePath": "contracts/proofs/StampProofs.sol",
+    "exportedSymbols": {
+      "StampProofs": [
+        7520
+      ]
+    },
+    "id": 7521,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7497,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:44"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 7520,
+        "linearizedBaseContracts": [
+          7520
+        ],
+        "name": "StampProofs",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 7503,
+            "name": "stampProof",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7502,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7499,
+                  "indexed": true,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7503,
+                  "src": "126:20:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 7498,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "126:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7501,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7503,
+                  "src": "148:17:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7500,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "148:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "125:41:44"
+            },
+            "src": "109:58:44"
+          },
+          {
+            "body": {
+              "id": 7506,
+              "nodeType": "Block",
+              "src": "194:2:44",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 7507,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7504,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "184:2:44"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 7505,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "194:0:44"
+            },
+            "scope": 7520,
+            "src": "173:23:44",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 7518,
+              "nodeType": "Block",
+              "src": "240:90:44",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 7513,
+                        "name": "hash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7509,
+                        "src": "301:4:44",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7514,
+                          "name": "block",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9235,
+                          "src": "307:5:44",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_block",
+                            "typeString": "block"
+                          }
+                        },
+                        "id": 7515,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "timestamp",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "307:15:44",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 7512,
+                      "name": "stampProof",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7503,
+                      "src": "290:10:44",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_uint256_$returns$__$",
+                        "typeString": "function (bytes32,uint256)"
+                      }
+                    },
+                    "id": 7516,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "290:33:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 7517,
+                  "nodeType": "EmitStatement",
+                  "src": "285:38:44"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 7519,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setProof",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7510,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7509,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7519,
+                  "src": "220:12:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 7508,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "220:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "219:14:44"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 7511,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "240:0:44"
+            },
+            "scope": 7520,
+            "src": "202:128:44",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7521,
+        "src": "26:307:44"
+      }
+    ],
+    "src": "0:333:44"
+  },
+  "legacyAST": {
+    "absolutePath": "contracts/proofs/StampProofs.sol",
+    "exportedSymbols": {
+      "StampProofs": [
+        7520
+      ]
+    },
+    "id": 7521,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7497,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:44"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 7520,
+        "linearizedBaseContracts": [
+          7520
+        ],
+        "name": "StampProofs",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 7503,
+            "name": "stampProof",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7502,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7499,
+                  "indexed": true,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7503,
+                  "src": "126:20:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 7498,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "126:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7501,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7503,
+                  "src": "148:17:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7500,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "148:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "125:41:44"
+            },
+            "src": "109:58:44"
+          },
+          {
+            "body": {
+              "id": 7506,
+              "nodeType": "Block",
+              "src": "194:2:44",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 7507,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7504,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "184:2:44"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 7505,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "194:0:44"
+            },
+            "scope": 7520,
+            "src": "173:23:44",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 7518,
+              "nodeType": "Block",
+              "src": "240:90:44",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 7513,
+                        "name": "hash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7509,
+                        "src": "301:4:44",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7514,
+                          "name": "block",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9235,
+                          "src": "307:5:44",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_block",
+                            "typeString": "block"
+                          }
+                        },
+                        "id": 7515,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "timestamp",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "307:15:44",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 7512,
+                      "name": "stampProof",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7503,
+                      "src": "290:10:44",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_uint256_$returns$__$",
+                        "typeString": "function (bytes32,uint256)"
+                      }
+                    },
+                    "id": 7516,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "290:33:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 7517,
+                  "nodeType": "EmitStatement",
+                  "src": "285:38:44"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 7519,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setProof",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7510,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7509,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7519,
+                  "src": "220:12:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 7508,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "220:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "219:14:44"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 7511,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "240:0:44"
+            },
+            "scope": 7520,
+            "src": "202:128:44",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7521,
+        "src": "26:307:44"
+      }
+    ],
+    "src": "0:333:44"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {
+        "0x0188e43a6fe56695c8aa76a0fbed4d085eeaf764d017607cb7b20ed30fae7d37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProofCreated",
+          "type": "event"
+        },
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        },
+        "0x6181541c791b3ff0c14a905aceeaf7811eab817d5e33bf538cfe6303cfae6372": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0xce6a386c16f328677a7d7290bc4786acf566a14db306072ecb649697e1a2b0a1"
+    },
+    "1603731526555": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xaC3dDC82a3D8D476b43C1f6f235A7550CAd43bD5",
+      "transactionHash": "0xf39750acb6145d37b0c967bc26ed754b755fc28291e3c9ac1f031309a7ecc596"
+    },
+    "1603966904057": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0x26e9b3826e91937b1e1dd00551f85864b1acabae59aaca30765cc0a2a8b56831"
+    },
+    "1603967546179": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0x26e9b3826e91937b1e1dd00551f85864b1acabae59aaca30765cc0a2a8b56831"
+    },
+    "1603967609435": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0x26e9b3826e91937b1e1dd00551f85864b1acabae59aaca30765cc0a2a8b56831"
+    },
+    "1603967822805": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x730Ab90b98A16Abc1F115785615d15573AeF4337",
+      "transactionHash": "0xff1c1cfbb4e1adaad1c7221e8c14fbe6f5758797de153daace3585d3f3148741"
+    },
+    "1603969612423": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0x26e9b3826e91937b1e1dd00551f85864b1acabae59aaca30765cc0a2a8b56831"
+    },
+    "1603969993704": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xB608f2cf92297A859cF277ea790B330C2DafAB78",
+      "transactionHash": "0xa4b3dfb8aa128a9517d6234c1e2474c71cb38210ad0a3c6fd85f745de9a8c8f9"
+    },
+    "1603971684705": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0x26e9b3826e91937b1e1dd00551f85864b1acabae59aaca30765cc0a2a8b56831"
+    },
+    "1603972186770": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0x26e9b3826e91937b1e1dd00551f85864b1acabae59aaca30765cc0a2a8b56831"
+    },
+    "1603972345771": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0x26e9b3826e91937b1e1dd00551f85864b1acabae59aaca30765cc0a2a8b56831"
+    },
+    "1603972603737": {
+      "events": {
+        "0xf12ecef4f7c3de41a7670580de4b31e8b6b59b6d2b36fe3a8c11390b406aeb34": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "stampProof",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xAE135bE1A8ab17aF2F92EdFb7Bf67d4e29623865",
+      "transactionHash": "0x26e9b3826e91937b1e1dd00551f85864b1acabae59aaca30765cc0a2a8b56831"
+    }
+  },
+  "schemaVersion": "3.3.1",
+  "updatedAt": "2020-11-01T16:00:57.027Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
