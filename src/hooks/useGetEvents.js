@@ -17,8 +17,6 @@ export default function useGetEvents() {
     const [submitted, setSubmitted] = useState(false);
 
     const getLogs = async() => {
-        // const network = await provider.getNetwork()
-        // console.log(network)
         setLoading(true)
         setSubmitted(false)
         try {
