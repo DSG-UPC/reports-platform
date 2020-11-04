@@ -28,7 +28,6 @@ export default function ExportReport() {
         ></input>
         <button type="submit">Submit</button>
       </form>
-      {state.status === "idle" && <p>Idle</p>}
       {state.status === "fetched" && (
         <>
           <h6>Function Proofs</h6>
