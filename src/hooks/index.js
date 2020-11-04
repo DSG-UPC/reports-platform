@@ -1,2 +1,2 @@
-export { default as useGetEvents } from "./useGetEvents";
+export { default as useFetchEvents } from "./useFetchEvents";
 export { default as useFetch } from "./useFetch";

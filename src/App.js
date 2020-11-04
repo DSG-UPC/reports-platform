@@ -2,7 +2,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-import { Home, ExportReport, ValidateReport } from "pages";
+import { Home, ExportReport, Stamps } from "pages";
 
 function App() {
   return (
@@ -15,13 +15,13 @@ function App() {
           <Link to="/export" className="App-link">
             Export
           </Link>
-          <Link to="/validate" className="App-link">
-            Validate
+          <Link to="/stamps" className="App-link">
+            Stamps
           </Link>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/export" component={ExportReport} />
-            <Route path="/validate" component={ValidateReport} />
+            <Route path="/stamps" component={Stamps} />
           </Switch>
         </Router>
       </section>

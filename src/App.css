@@ -7,21 +7,8 @@
   pointer-events: none;
 }
 
-/* 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
 .App-content {
-  background-color:#282c34;
+  background-color: var(--background_1);
   min-height: 100vh;
   max-width: 100vw;
   display: flex;
@@ -30,7 +17,6 @@
   /* justify-content: center; */
   /* text-align: left; */
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .hash {
@@ -38,5 +24,5 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--body-link);
 }

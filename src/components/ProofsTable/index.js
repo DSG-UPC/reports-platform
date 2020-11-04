@@ -13,7 +13,6 @@ function Proof(proof) {
 
 export default function ProofsTable({ data }) {
   return (
-    <div className="proofs-table-container">
       <table className="proofs-table">
         <tbody>
           <tr key="header">
@@ -26,6 +25,5 @@ export default function ProofsTable({ data }) {
           })}
         </tbody>
       </table>
-    </div>
   );
 }

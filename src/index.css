@@ -1,17 +1,11 @@
 :root {
-  --fz: 16px;
-  --theme--contrast-0: #121212;
-  --theme-body-bg: #18061f;
-  --theme-body-txt: #f3f3f3;
-  --search-size-mx-h: 3rem;
-  --zIndex-header: 20;
-  --zIndex-component: 5;
-  --brand-color_1: #00ff99;
-  --brand-color_2: #00ccff;
-  --brand-color_3: #9933ff;
-  --brand-color_4: tomato;
-  --brand-color_5: #fff35c;
-  --brand-color_6: #8429de;
+  --body-txt: #333333;
+  --body-link: #2780E3;
+  --body-red: #FF0039;
+  --button-color_1: #53A6BE;
+  --background_1: #FDFDFD;
+  --background_2: #F9F9F9;
+  --background_2: #EFEFEF;
 }
 
 body {
@@ -21,6 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--body-txt)
 }
 
 code {

@@ -2,26 +2,15 @@ import React, { useState } from "react";
 import { FileInput } from "components";
 import { Keccak } from "sha3";
 // import hash from "object-hash";
-import { useGetEvents } from "hooks";
+import { useFetchEvents } from "hooks";
 
-
-export default function ValidateReport() {
+export default function CheckStamp() {
   const [hash, setHash] = useState("");
-
-  const [
-    loading,
-    submitted,
-    success,
-    events,
-    error,
-    searchEvents,
-  ] = useGetEvents();
-
+  const [submittedHash, setSubmittedHash] = useState("");
+  const { stamps } = useFetchEvents(submittedHash);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (hash !== "") {
-      searchEvents(hash);
-    }
+    setSubmittedHash(hash);
   };
 
   const handleChange = (evt) => {
@@ -48,7 +37,7 @@ export default function ValidateReport() {
 
   return (
     <>
-      <h1>Validate Report</h1>
+      <h3>Check Stamp</h3>
       <form onSubmit={handleSubmit}>
         <FileInput value={hash} onChange={handleChange} />
         {hash && (
@@ -58,23 +47,18 @@ export default function ValidateReport() {
         )}
         <button type="submit">Submit</button>
       </form>
-      {loading && <p>Loading...</p>}
-      {submitted &&
-        (success ? (
-          <>
-            <h3 style={{ color: "green" }}>success</h3>
-            <ul>
-              {events.map((event) => (
-                <li key={event.i}>{event.date.toGMTString()}</li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <>
-            <h3 style={{ color: "red" }}>failure</h3>
-            <p>Error: {error}</p>
-          </>
-        ))}
+      {stamps.status === "fetching" && <p>fetching...</p>}
+      {stamps.status === "error" && <p>{stamps.error}</p>}
+      {stamps.status === "fetched" && (
+        <div>
+          <p>Stamps found:</p>
+          <ul>
+            {stamps.data.map((stamp) => (
+              <li key={stamp.i}>{stamp.date.toLocaleString()}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 }
