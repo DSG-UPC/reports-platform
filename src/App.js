@@ -10,12 +10,12 @@ function App() {
     <Router>
       <AppBar position="static">
         <Toolbar>
-          <Typography color="initial" variant="h8">
+          <Typography color="initial" variant="h6">
             <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
               Home
             </Link>
           </Typography>
-          <Typography color="initial" variant="h8">
+          <Typography color="initial" variant="h6">
             <Link
               to="/export"
               style={{ textDecoration: "none", color: "inherit" }}
@@ -23,7 +23,7 @@ function App() {
               Export
             </Link>
           </Typography>
-          <Typography color="initial" variant="h8">
+          <Typography color="initial" variant="h6">
             <Link
               to="/stamps"
               style={{ textDecoration: "none", color: "inherit" }}

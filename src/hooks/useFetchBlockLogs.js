@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from "react";
-import ethers from "ethers";
+import ethers from "ethers"
 
 const initialState = {
   status: "idle",
@@ -7,8 +7,12 @@ const initialState = {
   data: [],
 };
 
-export default function useFetchBlock(blocknum) {
-  const [state, dispatch] = useReducer((state, action) => {
+const iface = new ethers.utils.Interface(
+  require("contracts/DepositDevice.json").abi
+);
+
+export default function useFetchBlockLogs(blocknum) {
+    const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "FETCHING":
         return { ...initialState, status: "fetching" };
@@ -25,22 +29,28 @@ export default function useFetchBlock(blocknum) {
     let cancelRequest = false;
     if (!blocknum) return;
 
-    const getBlock = async () => {
+    const getBlockLogs = async () => {
       dispatch({ type: "FETCHING" });
 
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const block = await provider.getBlockWithTransactions(Number(blocknum));
-        if (block === null) throw new Error("Block not found")
+        const logs = await provider.getLogs({
+                fromBlock: Number(blocknum),
+                toBlock: Number(blocknum),
+            });
+        const events = logs.map((log) => {
+            return iface.parseLog(log).args;
+        });
+        if (events === null) throw new Error("Events not found in this block")
         else if (cancelRequest) return;
-        else dispatch({ type: "FETCHED", payload: block });
+        else dispatch({ type: "FETCHED", payload: events });
       } catch (error) {
         if (cancelRequest) return;
         dispatch({ type: "FETCH_ERROR", payload: error.message });
       }
     };
 
-    getBlock();
+    getBlockLogs();
 
     return function cleanup() {
       cancelRequest = true;
