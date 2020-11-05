@@ -1,32 +1,47 @@
 // import logo from "./logo.svg";
-import "./App.css";
+// import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import { Home, ExportReport, Stamps, Blocks } from "pages";
+import { Container, AppBar, Toolbar, Typography } from "@material-ui/core";
 
 function App() {
   return (
-    <div className="App">
-      <section className="App-content">
-        <Router>
-          <Link to="/" className="App-link">
-            Home
-          </Link>
-          <Link to="/export" className="App-link">
-            Export
-          </Link>
-          <Link to="/stamps" className="App-link">
-            Stamps
-          </Link>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/export" component={ExportReport} />
-            <Route path="/stamps" component={Stamps} />
-            <Route path="/b/:blocknum" component={Blocks} />
-          </Switch>
-        </Router>
-      </section>
-    </div>
+    <Router>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography color="initial" variant="h8">
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+              Home
+            </Link>
+          </Typography>
+          <Typography color="initial" variant="h8">
+            <Link
+              to="/export"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Export
+            </Link>
+          </Typography>
+          <Typography color="initial" variant="h8">
+            <Link
+              to="/stamps"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Stamps
+            </Link>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Container maxWidth="sm">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/export" component={ExportReport} />
+          <Route path="/stamps" component={Stamps} />
+          <Route path="/b/:blocknum" component={Blocks} />
+        </Switch>
+      </Container>
+    </Router>
   );
 }
 
