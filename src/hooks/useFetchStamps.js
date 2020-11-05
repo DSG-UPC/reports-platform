@@ -11,7 +11,7 @@ const initialState = {
   data: [],
 };
 
-export default function useFetchEvents(hash) {
+export default function useFetchStamps(hash) {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "FETCHING":

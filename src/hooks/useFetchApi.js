@@ -6,10 +6,7 @@ const initialState = {
   data: [],
 };
 
-const useFetch = (url) => {
-  // const [status, setStatus] = useState("idle");
-  // const [data, setData] = useState([]);
-
+export default function useFetchApi(url){
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "FETCHING":
@@ -49,7 +46,5 @@ const useFetch = (url) => {
     }
   }, [url]);
 
-  return { state };
+  return state;
 };
-
-export default useFetch

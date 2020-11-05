@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { FileInput } from "components";
 import { Keccak } from "sha3";
-import { useFetchEvents } from "hooks";
+import { useFetchStamps } from "hooks";
 
 export default function CheckStamp() {
   const [hash, setHash] = useState("");
   const [submittedHash, setSubmittedHash] = useState("");
-  const { stamps } = useFetchEvents(submittedHash);
+  const { stamps } = useFetchStamps(submittedHash);
   
   const handleSubmit = (evt) => {
     evt.preventDefault();

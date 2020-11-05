@@ -1,9 +1,9 @@
 import React from "react";
 import "./styles.css";
 
-function Proof(proof) {
+function ProofRow(proof) {
   return (
-    <tr key={proof.id}>
+    <tr>
       {Object.entries(proof).map((field) => {
         return <td key={`${proof.id}${field[0]}`}>{field[1]}</td>;
       })}
@@ -11,19 +11,24 @@ function Proof(proof) {
   );
 }
 
-export default function ProofsTable({ data }) {
+export default function ProofsTable({ name = "noname", data }) {
+  if (data.length === 0) return <></>;
   return (
-      <table className="proofs-table">
-        <tbody>
-          <tr key="header">
-            {Object.entries(data[0]).map((entry) => {
-              return <th key={entry[0]}>{entry[0].toUpperCase()}</th>;
-            })}
-          </tr>
-          {data.map((proof) => {
-            return <Proof {...proof} />;
+    <table className="proofs-table">
+      <caption>{name}</caption>
+      <tbody>
+        {/* <tr>
+          <th colSpan="100%">{name.toUpperCase()}</th>
+        </tr> */}
+        <tr>
+          {Object.entries(data[0]).map((entry) => {
+            return <th key={entry[0]}>{entry[0]}</th>;
           })}
-        </tbody>
-      </table>
+        </tr>
+        {data.map((proof) => {
+          return <ProofRow key={proof.id} {...proof} />;
+        })}
+      </tbody>
+    </table>
   );
 }

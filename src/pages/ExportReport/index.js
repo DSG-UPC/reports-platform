@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFetch } from "hooks";
+import { useFetchApi } from "hooks";
 import { ProofsTable } from "components";
 const IP = "localhost",
   PORT = "3001";
@@ -9,8 +9,8 @@ export default function ExportReport() {
   const [deviceAddress, setDeviceAddress] = useState("");
   const url =
     deviceAddress && `http://${IP}:${PORT}/cache/devices/${deviceAddress}`;
-  const { state } = useFetch(url);
-
+  const fetch = useFetchApi(url);
+  
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setDeviceAddress(input);
@@ -28,21 +28,31 @@ export default function ExportReport() {
         ></input>
         <button type="submit">Submit</button>
       </form>
-      {state.status === "fetched" && (
+      {fetch.status === "fetched" && (
         <>
-          <h6>Function Proofs</h6>
-          <ProofsTable data={state.data.device.proofs.functionproofs} />
-          <h6>Recycle Proofs</h6>
-          <ProofsTable data={state.data.device.proofs.recycleproofs} />
-          <h6>Data Wipe Proofs</h6>
-          <ProofsTable data={state.data.device.proofs.datawipeproofs} />
-          <h6>Reuse Proofs</h6>
-          <ProofsTable data={state.data.device.proofs.reuseproofs} />
-          <h6>Transfer Proofs</h6>
-          <ProofsTable data={state.data.device.proofs.transferproofs} />
+          <ProofsTable
+            name="Funcion Proofs"
+            data={fetch.data.device.proofs.functionproofs}
+          />
+          <ProofsTable
+            name="Recycle Proofs"
+            data={fetch.data.device.proofs.recycleproofs}
+          />
+          <ProofsTable
+            name="Data Wipe Proofs"
+            data={fetch.data.device.proofs.datawipeproofs}
+          />
+          <ProofsTable
+            name="Reuse Proofs"
+            data={fetch.data.device.proofs.reuseproofs}
+          />
+          <ProofsTable
+            name="Transfer Proofs"
+            data={fetch.data.device.proofs.transferproofs}
+          />
         </>
       )}
-      {state.status === "error" && <p>{state.error}</p>}
+      {fetch.status === "error" && <p>{fetch.error}</p>}
     </>
   );
 }

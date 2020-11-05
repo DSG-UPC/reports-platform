@@ -2,7 +2,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-import { Home, ExportReport, Stamps } from "pages";
+import { Home, ExportReport, Stamps, Blocks } from "pages";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/export" component={ExportReport} />
             <Route path="/stamps" component={Stamps} />
+            <Route path="/b/:blocknum" component={Blocks} />
           </Switch>
         </Router>
       </section>
