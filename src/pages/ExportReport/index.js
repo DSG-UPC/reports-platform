@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { useFetchApi } from "hooks";
 import { ProofsTable, DeviceImpact } from "components";
-import { TextField, Button, Box, Typography } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  InputAdornment,
+} from "@material-ui/core";
 import ReactToPdf from "react-to-pdf";
 const IP = "localhost",
   PORT = "3001";
 
-export default function ExportReport() {
-  const [input, setInput] = useState("");
+export default function ExportReport({location}) {
+  const params = new URLSearchParams(location.search);
+  const [input, setInput] = useState(params.get("device"));
   const [deviceAddress, setDeviceAddress] = useState("");
   const url =
     deviceAddress && `http://${IP}:${PORT}/cache/devices/${deviceAddress}`;
@@ -34,10 +41,16 @@ export default function ExportReport() {
             style={{ marginTop: "20px" }}
             fullWidth
             input={input}
+            value={input}
             onChange={(evt) => setInput(evt.target.value)}
             id="outlined-basic"
             label="Device Address"
             variant="outlined"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">0x</InputAdornment>
+              ),
+            }}
           ></TextField>
           <Button
             type="submit"
@@ -66,7 +79,7 @@ export default function ExportReport() {
           </ReactToPdf>
           <div ref={ref}>
             <Box mt={3}>
-              <DeviceImpact proofs={fetch.data.device?.proofs}/>
+              <DeviceImpact proofs={fetch.data.device?.proofs} />
             </Box>
             <Box mt={3}>
               <ProofsTable
