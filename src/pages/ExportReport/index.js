@@ -9,15 +9,15 @@ import {
   InputAdornment,
 } from "@material-ui/core";
 import ReactToPdf from "react-to-pdf";
-const IP = "localhost",
-  PORT = "3001";
+require("dotenv").config();
 
 export default function ExportReport({location}) {
   const params = new URLSearchParams(location.search);
-  const [input, setInput] = useState(params.get("device"));
+  const [input, setInput] = useState(params.get("device") || "");
   const [deviceAddress, setDeviceAddress] = useState("");
   const url =
-    deviceAddress && `http://${IP}:${PORT}/cache/devices/${deviceAddress}`;
+    deviceAddress &&
+    `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/devices/${deviceAddress}`;
   const fetch = useFetchApi(url);
   const ref = React.createRef();
 

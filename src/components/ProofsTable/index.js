@@ -53,7 +53,7 @@ function ProofRow(proof) {
     <TableRow>
       {Object.entries(proof).map((keyvalue) => {
         return (
-          <TableCell key={`${proof.id}${keyvalue[0]}`}>
+          <TableCell>
             {(() => {
               if (keyvalue[0] === "block")
                 return <BlockLink blocknum={keyvalue[1]} />;

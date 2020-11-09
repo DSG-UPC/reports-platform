@@ -6,6 +6,8 @@ import { Home, ExportReport, Stamps, Blocks } from "pages";
 import { Container, AppBar, Toolbar, Typography } from "@material-ui/core";
 
 function App() {
+  if (typeof web3 === 'undefined') return <div>This webapp needs metamask chrome extension installed in order to work</div>
+
   return (
     <Router>
       <AppBar position="static">

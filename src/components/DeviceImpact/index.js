@@ -1,5 +1,5 @@
 import { Box, Typography } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function DeviceImpact({ proofs }) {
   const firstUsage = proofs.functionproofs[0].diskusage;
@@ -13,20 +13,20 @@ export default function DeviceImpact({ proofs }) {
     <>
       <Typography variant="h6">Device Metrics</Typography>
       <Box mt={3}>
-        <Typography variant="subtitle">Social impact</Typography>
+        <Typography variant="subtitle1">Social impact</Typography>
         <ul>
           <li>Device Base Usage: {firstUsage} hours</li>
           <li>Device Extended Life-Time: {extendedUsage} hours</li>
         </ul>
       </Box>
       <Box mt={3}>
-        <Typography variant="subtitle">Score</Typography>
+        <Typography variant="subtitle1">Score</Typography>
         <ul>
           <li>Device Last Score: {lastScore}/10</li>
         </ul>
       </Box>
       <Box mt={3}>
-        <Typography variant="subtitle">Proofs</Typography>
+        <Typography variant="subtitle1">Proofs</Typography>
         <ul>
           <li># Function Proofs: {proofs.functionproofs.length}</li>
           <li># Recycle Proofs: {proofs.recycleproofs.length}</li>
