@@ -1,40 +1,17 @@
 // import logo from "./logo.svg";
 // import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Home, ExportReport, Stamps, Blocks } from "pages";
-import { Container, AppBar, Toolbar, Typography } from "@material-ui/core";
+import { Container } from "@material-ui/core";
+import { NavBar } from "components";
 
 function App() {
   if (typeof web3 === 'undefined') return <div>This webapp needs metamask chrome extension installed in order to work</div>
 
   return (
     <Router>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography color="initial" variant="h6">
-            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-              Home
-            </Link>
-          </Typography>
-          <Typography color="initial" variant="h6">
-            <Link
-              to="/export"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Export
-            </Link>
-          </Typography>
-          <Typography color="initial" variant="h6">
-            <Link
-              to="/stamps"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Stamps
-            </Link>
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <NavBar></NavBar>
       <Container maxWidth="sm">
         <Switch>
           <Route exact path="/" component={Home} />
