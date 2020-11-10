@@ -1,13 +1,10 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
+import {getDeviceImpact} from "utils"
 
-export default function DeviceImpact({ proofs }) {
-  const firstUsage = proofs.functionproofs[0].diskusage;
-  const extendedUsage =
-    proofs.functionproofs[proofs.functionproofs.length - 1].diskusage -
-    firstUsage;
-  const lastScore =
-    proofs.functionproofs[proofs.functionproofs.length - 1].score;
+export default function DeviceImpact({device}) {
+  const proofs = device.proofs
+  const {firstUsage, extendedUsage, lastScore} = getDeviceImpact(device)
 
   return (
     <>
