@@ -7,11 +7,11 @@ import { Container } from "@material-ui/core";
 import { NavBar } from "components";
 
 function App() {
-  if (typeof web3 === 'undefined') return <div>This webapp needs metamask chrome extension installed in order to work</div>
+  // if (typeof web3 === 'undefined') return <div>This webapp needs metamask chrome extension installed in order to work</div>
 
   return (
     <Router>
-      <NavBar></NavBar>
+      {/* <NavBar/> */}
       <Container maxWidth="sm">
         <Switch>
           <Route exact path="/" component={Home} />

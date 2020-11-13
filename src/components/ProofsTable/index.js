@@ -21,7 +21,7 @@ export default function ProofsTable({ name, data }) {
   if (data.length === 0) return <></>;
   return (
     <>
-      <Typography component="h2" variant="h6" color="primary" gutterBottom>
+      <Typography component="h2" variant="h6" color="primary" style={{marginBottom: "20px"}}>
         {name}
       </Typography>
       <TableContainer component={Paper}>
@@ -67,5 +67,3 @@ function ProofRow(proof) {
     </TableRow>
   );
 }
-// {keyvalue[0] === "block" && <BlockLink blocknum={keyvalue[1]}/>
-// {keyvalue[0]}

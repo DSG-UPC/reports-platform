@@ -15,14 +15,23 @@ export default function useFetchApi(url){
         return { ...initialState, status: "fetched", data: action.payload };
       case "FETCH_ERROR":
         return { ...initialState, status: "error", error: action.payload };
+      case "IDLE":
+        return { ...initialState};
       default:
         return state;
     }
   }, initialState);
 
+  const reset = () => {
+    dispatch({type: "IDLE"})
+  }
+
   useEffect(() => {
     let cancelRequest = false;
-    if (!url) return;
+    if (!url) {
+      reset()
+      return
+    }
 
     const fetchData = async () => {
       dispatch({ type: 'FETCHING' })

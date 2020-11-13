@@ -1,49 +1,49 @@
-import { Box, Typography } from "@material-ui/core";
+import { Typography, Grid } from "@material-ui/core";
 import React from "react";
-import {getDeviceImpact} from "utils"
+import { getDeviceImpact } from "utils";
+import { GridPaper } from "components";
 
-export default function DeviceImpact({device}) {
-  const proofs = device.proofs
-  const {firstUsage, extendedUsage, lastScore} = getDeviceImpact(device)
+function Data({ children }) {
+  return (
+    <Typography variant="body2" style={{ fontWeight: "bold" }}>
+      {children}
+    </Typography>
+  );
+}
+
+export default function DeviceImpact({ device }) {
+  const proofs = device.proofs;
+  const { firstUsage, extendedUsage, lastScore } = getDeviceImpact(device);
 
   return (
     <>
-      <Typography variant="h6">Device Metrics</Typography>
-      <Box mt={3}>
-        <Typography variant="subtitle1">Social impact</Typography>
-        <ul>
-          <li>Device Base Usage: {firstUsage} hours</li>
-          <li>Device Extended Life-Time: {extendedUsage} hours</li>
-        </ul>
-      </Box>
-      <Box mt={3}>
-        <Typography variant="subtitle1">Score</Typography>
-        <ul>
-          <li>Device Last Score: {lastScore}/10</li>
-        </ul>
-      </Box>
-      <Box mt={3}>
-        <Typography variant="subtitle1">Proofs</Typography>
-        <ul>
-          <li># Function Proofs: {proofs.functionproofs.length}</li>
-          <li># Recycle Proofs: {proofs.recycleproofs.length}</li>
-          <li># Transfer Proofs: {proofs.transferproofs.length}</li>
-          <li># Reuse Proofs: {proofs.reuseproofs.length}</li>
-          <li># Data Wipe Proofs: {proofs.datawipeproofs.length}</li>
-          <li>
-            <b>
-              # Total Proofs:{" "}
-              {(() => {
-                let count = 0;
-                Object.keys(proofs).forEach((key) => {
-                  count += proofs[key].length;
-                });
-                return count;
-              })()}
-            </b>
-          </li>
-        </ul>
-      </Box>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Typography variant="h6" color="primary">
+            Device Metrics
+          </Typography>
+        </Grid>
+        <GridPaper>
+          <Typography variant="caption">Base Usage</Typography>
+          <Data>{firstUsage} hours</Data>
+        </GridPaper>
+        <GridPaper>
+          <Typography variant="caption">Extended Life-Time</Typography>
+          <Data>{extendedUsage} hours</Data>
+        </GridPaper>
+        <GridPaper>
+          <Typography variant="caption">Last Score</Typography>
+          <Data>{lastScore}/10</Data>
+        </GridPaper>
+        <GridPaper>
+          <Typography variant="caption">Proofs</Typography>
+          <Data># Function Proofs: {proofs.functionproofs.length}</Data>
+          <Data># Recycle Proofs: {proofs.recycleproofs.length}</Data>
+          <Data># Transfer Proofs: {proofs.transferproofs.length}</Data>
+          <Data># Reuse Proofs: {proofs.reuseproofs.length}</Data>
+          <Data># Data Wipe Proofs: {proofs.datawipeproofs.length}</Data>
+        </GridPaper>
+      </Grid>
     </>
   );
 }
