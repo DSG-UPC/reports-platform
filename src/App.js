@@ -2,7 +2,7 @@
 // import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { Home, ExportReport, Stamps, Blocks } from "pages";
+import { ExportReport, Stamps, Blocks } from "pages";
 import { Container } from "@material-ui/core";
 import { NavBar } from "components";
 
@@ -11,11 +11,10 @@ function App() {
 
   return (
     <Router>
-      {/* <NavBar/> */}
-      <Container maxWidth="sm">
+      <NavBar />
+      <Container maxWidth="md">
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/export" component={ExportReport} />
+          <Route exact path="/" component={ExportReport} />
           <Route path="/stamps" component={Stamps} />
           <Route path="/b/:blocknum" component={Blocks} />
         </Switch>

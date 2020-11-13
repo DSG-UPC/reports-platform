@@ -21,15 +21,25 @@ export default function ProofsTable({ name, data }) {
   if (data.length === 0) return <></>;
   return (
     <>
-      <Typography component="h2" variant="h6" color="primary" style={{marginBottom: "20px"}}>
+      <Typography
+        component="h2"
+        variant="h6"
+        color="primary"
+        style={{ marginBottom: "20px" }}
+      >
         {name}
       </Typography>
       <TableContainer component={Paper}>
-        <Table size="small">
+        <Table size="small" style={{ tableLayout: "auto" }}>
           <TableHead>
             <TableRow>
               {Object.entries(data[0]).map((keyvalue) => {
-                return <TableCell key={keyvalue[0]}>{keyvalue[0]}</TableCell>;
+                const align = keyvalue[0] === "block" ? "left" : "right";
+                return (
+                  <TableCell align={align} key={keyvalue[0]}>
+                    {keyvalue[0]}
+                  </TableCell>
+                );
               })}
             </TableRow>
           </TableHead>
@@ -52,8 +62,9 @@ function ProofRow(proof) {
   return (
     <TableRow>
       {Object.entries(proof).map((keyvalue) => {
+        const align = keyvalue[0] === "block" ? "left" : "right"
         return (
-          <TableCell>
+          <TableCell align={align}>
             {(() => {
               if (keyvalue[0] === "block")
                 return <BlockLink blocknum={keyvalue[1]} />;

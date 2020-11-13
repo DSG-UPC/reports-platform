@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 import {
-  TabPanel,
-  UserReport,
-  DeviceReport,
-} from "components";
-import {
   Typography,
   Grid,
   Paper,
@@ -12,6 +7,11 @@ import {
   Tabs,
   Tab,
 } from "@material-ui/core";
+import {
+  TabPanel,
+} from "components";
+import UserReport from "./user/UserReport"
+import DeviceReport from "./device/DeviceReport";
 require("dotenv").config();
 
 const useStyles = makeStyles({
@@ -21,14 +21,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ExportReport({ location }) {
+export default function ExportReport({location}) {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
 
   return (
     <>
       <Paper elevation={2} className={classes.paperContainer}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h6">Export DLT Reports</Typography>
             <hr />
@@ -45,7 +45,7 @@ export default function ExportReport({ location }) {
           </Grid>
           <Grid item xs={12}>
             <TabPanel value={tabValue} index={0}>
-              <DeviceReport/>
+              <DeviceReport location={location}/>
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
               <UserReport/>

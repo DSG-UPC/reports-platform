@@ -43,14 +43,6 @@ export default function NavBar() {
         </Button>
         <Button color="inherit">
           <Link
-            to="/export"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            Reports
-          </Link>
-        </Button>
-        <Button color="inherit">
-          <Link
             to="/stamps"
             style={{ textDecoration: "none", color: "inherit" }}
           >
