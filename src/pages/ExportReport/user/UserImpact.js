@@ -27,11 +27,11 @@ const useStyles = makeStyles({
     borderLeftStyle: "solid",
     borderWidth: "5px",
   },
-  addressLink:{
+  addressLink: {
     "&:hover": {
-        textDecoration: "underline",
+      textDecoration: "underline",
     },
-  }
+  },
 });
 
 export default function UserImpact({ devices }) {

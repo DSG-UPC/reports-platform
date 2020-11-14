@@ -7,7 +7,7 @@ export default function CheckStamp() {
   const [hash, setHash] = useState("");
   const [submittedHash, setSubmittedHash] = useState("");
   const { stamps } = useFetchStamps(submittedHash);
-  
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setSubmittedHash(hash);
@@ -25,14 +25,15 @@ export default function CheckStamp() {
         const content = e.target.result;
         keccak.update(content);
         const hash = "0x" + keccak.digest("hex");
-        setHash(hash); //most important thing
+        setHash(hash); // most important thing
       };
       reader.readAsText(file);
     } else if (
       evt.target.files[0] !== undefined &&
       evt.target.files[0].type !== "text/csv"
-    )
+    ) {
       alert("Only CSV");
+    }
   };
 
   return (

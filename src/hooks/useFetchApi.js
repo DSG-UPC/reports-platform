@@ -1,4 +1,4 @@
-import {useReducer, useEffect} from "react"
+import { useReducer, useEffect } from "react";
 
 const initialState = {
   status: "idle",
@@ -6,7 +6,7 @@ const initialState = {
   data: [],
 };
 
-export default function useFetchApi(url){
+export default function useFetchApi(url) {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "FETCHING":
@@ -16,44 +16,44 @@ export default function useFetchApi(url){
       case "FETCH_ERROR":
         return { ...initialState, status: "error", error: action.payload };
       case "IDLE":
-        return { ...initialState};
+        return { ...initialState };
       default:
         return state;
     }
   }, initialState);
 
   const reset = () => {
-    dispatch({type: "IDLE"})
-  }
+    dispatch({ type: "IDLE" });
+  };
 
   useEffect(() => {
     let cancelRequest = false;
     if (!url) {
-      reset()
-      return
+      reset();
+      return;
     }
 
     const fetchData = async () => {
-      dispatch({ type: 'FETCHING' })
+      dispatch({ type: "FETCHING" });
 
       try {
         const response = await fetch(url);
         const res = await response.json();
-        if (res.status !== "success") throw new Error(res.message)
+        if (res.status !== "success") throw new Error(res.message);
         if (cancelRequest) return;
-        dispatch({ type: 'FETCHED', payload: res.data })
+        dispatch({ type: "FETCHED", payload: res.data });
       } catch (error) {
         if (cancelRequest) return;
-        dispatch( {type: 'FETCH_ERROR', payload: error.message} )
+        dispatch({ type: "FETCH_ERROR", payload: error.message });
       }
     };
 
     fetchData();
 
-    return function cleanup(){
+    return function cleanup() {
       cancelRequest = true;
-    }
+    };
   }, [url]);
 
   return state;
-};
+}

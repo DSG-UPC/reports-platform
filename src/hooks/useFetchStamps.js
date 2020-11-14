@@ -24,11 +24,11 @@ export default function useFetchStamps(hash) {
         return state;
     }
   }, initialState);
-  
+
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     if (hash === "") return;
-    //check valid hash
+    // check valid hash
     const fetchEvents = async () => {
       dispatch({ type: "FETCHING" });
 
@@ -51,11 +51,12 @@ export default function useFetchStamps(hash) {
             date: new Date(event.timestamp.toNumber() * 1000),
           };
         });
-        if (logs.length === 0)
+        if (logs.length === 0) {
           throw new Error("No stamps found for this document");
-        else dispatch({ type: "FETCHED", payload: events });
+        } else dispatch({ type: "FETCHED", payload: events });
       } catch (error) {
-        if (error.code && error.code === -32603) error.message = "Couldn't connect to the blockchain"
+        if (error.code && error.code === -32603)
+          error.message = "Couldn't connect to the blockchain";
         dispatch({ type: "FETCH_ERROR", payload: error.message });
       }
     };

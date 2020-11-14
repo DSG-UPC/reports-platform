@@ -31,7 +31,7 @@ export default function useFetchBlock(blocknum) {
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const block = await provider.getBlockWithTransactions(Number(blocknum));
-        if (block === null) throw new Error("Block not found")
+        if (block === null) throw new Error("Block not found");
         else if (cancelRequest) return;
         else dispatch({ type: "FETCHED", payload: block });
       } catch (error) {

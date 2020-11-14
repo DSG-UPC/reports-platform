@@ -7,10 +7,8 @@ import {
   Tabs,
   Tab,
 } from "@material-ui/core";
-import {
-  TabPanel,
-} from "components";
-import UserReport from "./user/UserReport"
+import { TabPanel } from "components";
+import UserReport from "./user/UserReport";
 import DeviceReport from "./device/DeviceReport";
 require("dotenv").config();
 
@@ -21,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ExportReport({location}) {
+export default function ExportReport({ location }) {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
 
@@ -45,10 +43,10 @@ export default function ExportReport({location}) {
           </Grid>
           <Grid item xs={12}>
             <TabPanel value={tabValue} index={0}>
-              <DeviceReport location={location}/>
+              <DeviceReport location={location} />
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
-              <UserReport/>
+              <UserReport />
             </TabPanel>
             <TabPanel value={tabValue} index={2}>
               General Data

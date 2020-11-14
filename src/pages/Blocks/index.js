@@ -1,21 +1,18 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useFetchBlock, useFetchBlockLogs } from "hooks";
+import React from "react"
+import { useParams } from "react-router-dom"
+import { useFetchBlock, useFetchBlockLogs } from "hooks"
 import {
-  Box,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableRow,
-} from "@material-ui/core";
-
-
+} from "@material-ui/core"
 
 export default function Blocks() {
-  const { blocknum } = useParams();
-  const block = useFetchBlock(blocknum);
-  const events = useFetchBlockLogs(blocknum);
+  const { blocknum } = useParams()
+  const block = useFetchBlock(blocknum)
+  const events = useFetchBlockLogs(blocknum)
 
   return (
     <div>
@@ -65,13 +62,13 @@ export default function Blocks() {
       {events.status === "error" && <p>{events.error}</p>}
       {events.status === "fetched" && "events fetched"}
     </div>
-  );
+  )
 }
 
-        // <TableContainer>
-        //   <Table>
-        //     <TableBody>
-        //       Events
-        //     </TableBody>
-        //   </Table>
-        // </TableContainer>
+// <TableContainer>
+//   <Table>
+//     <TableBody>
+//       Events
+//     </TableBody>
+//   </Table>
+// </TableContainer>

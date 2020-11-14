@@ -728,21 +728,14 @@
   "ast": {
     "absolutePath": "contracts/devices/DepositDevice.sol",
     "exportedSymbols": {
-      "DepositDevice": [
-        6410
-      ]
+      "DepositDevice": [6410]
     },
     "id": 6411,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 5674,
-        "literals": [
-          "solidity",
-          "^",
-          "0.4",
-          ".25"
-        ],
+        "literals": ["solidity", "^", "0.4", ".25"],
         "nodeType": "PragmaDirective",
         "src": "0:24:36"
       },
@@ -833,17 +826,12 @@
             "src": "409:7:36"
           }
         ],
-        "contractDependencies": [
-          8037
-        ],
+        "contractDependencies": [8037],
         "contractKind": "contract",
         "documentation": "@title Ereuse Device basic implementation",
         "fullyImplemented": true,
         "id": 6410,
-        "linearizedBaseContracts": [
-          6410,
-          8037
-        ],
+        "linearizedBaseContracts": [6410, 8037],
         "name": "DepositDevice",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -1965,9 +1953,7 @@
                   "src": "1897:39:36"
                 },
                 {
-                  "assignments": [
-                    5783
-                  ],
+                  "assignments": [5783],
                   "declarations": [
                     {
                       "constant": false,
@@ -2047,9 +2033,7 @@
                   "src": "1946:45:36"
                 },
                 {
-                  "assignments": [
-                    5789
-                  ],
+                  "assignments": [5789],
                   "declarations": [
                     {
                       "constant": false,
@@ -2129,9 +2113,7 @@
                   "src": "2001:49:36"
                 },
                 {
-                  "assignments": [
-                    5795
-                  ],
+                  "assignments": [5795],
                   "declarations": [
                     {
                       "constant": false,
@@ -4231,9 +4213,7 @@
               "src": "3748:408:36",
               "statements": [
                 {
-                  "assignments": [
-                    5967
-                  ],
+                  "assignments": [5967],
                   "declarations": [
                     {
                       "constant": false,
@@ -5215,9 +5195,7 @@
               "src": "4598:367:36",
               "statements": [
                 {
-                  "assignments": [
-                    6037
-                  ],
+                  "assignments": [6037],
                   "declarations": [
                     {
                       "constant": false,
@@ -6132,9 +6110,7 @@
               "src": "5401:397:36",
               "statements": [
                 {
-                  "assignments": [
-                    6103
-                  ],
+                  "assignments": [6103],
                   "declarations": [
                     {
                       "constant": false,
@@ -7066,9 +7042,7 @@
               "src": "6213:372:36",
               "statements": [
                 {
-                  "assignments": [
-                    6168
-                  ],
+                  "assignments": [6168],
                   "declarations": [
                     {
                       "constant": false,
@@ -7981,9 +7955,7 @@
               "src": "6997:423:36",
               "statements": [
                 {
-                  "assignments": [
-                    6239
-                  ],
+                  "assignments": [6239],
                   "declarations": [
                     {
                       "constant": false,
@@ -9369,9 +9341,7 @@
               "src": "8010:197:36",
               "statements": [
                 {
-                  "assignments": [
-                    6334
-                  ],
+                  "assignments": [6334],
                   "declarations": [
                     {
                       "constant": false,
@@ -10204,10 +10174,7 @@
                       "id": 6389,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        9222,
-                        9223
-                      ],
+                      "overloadedDeclarations": [9222, 9223],
                       "referencedDeclaration": 9223,
                       "src": "8551:7:36",
                       "typeDescriptions": {
@@ -10404,21 +10371,14 @@
   "legacyAST": {
     "absolutePath": "contracts/devices/DepositDevice.sol",
     "exportedSymbols": {
-      "DepositDevice": [
-        6410
-      ]
+      "DepositDevice": [6410]
     },
     "id": 6411,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 5674,
-        "literals": [
-          "solidity",
-          "^",
-          "0.4",
-          ".25"
-        ],
+        "literals": ["solidity", "^", "0.4", ".25"],
         "nodeType": "PragmaDirective",
         "src": "0:24:36"
       },
@@ -10509,17 +10469,12 @@
             "src": "409:7:36"
           }
         ],
-        "contractDependencies": [
-          8037
-        ],
+        "contractDependencies": [8037],
         "contractKind": "contract",
         "documentation": "@title Ereuse Device basic implementation",
         "fullyImplemented": true,
         "id": 6410,
-        "linearizedBaseContracts": [
-          6410,
-          8037
-        ],
+        "linearizedBaseContracts": [6410, 8037],
         "name": "DepositDevice",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -11641,9 +11596,7 @@
                   "src": "1897:39:36"
                 },
                 {
-                  "assignments": [
-                    5783
-                  ],
+                  "assignments": [5783],
                   "declarations": [
                     {
                       "constant": false,
@@ -11723,9 +11676,7 @@
                   "src": "1946:45:36"
                 },
                 {
-                  "assignments": [
-                    5789
-                  ],
+                  "assignments": [5789],
                   "declarations": [
                     {
                       "constant": false,
@@ -11805,9 +11756,7 @@
                   "src": "2001:49:36"
                 },
                 {
-                  "assignments": [
-                    5795
-                  ],
+                  "assignments": [5795],
                   "declarations": [
                     {
                       "constant": false,
@@ -13907,9 +13856,7 @@
               "src": "3748:408:36",
               "statements": [
                 {
-                  "assignments": [
-                    5967
-                  ],
+                  "assignments": [5967],
                   "declarations": [
                     {
                       "constant": false,
@@ -14891,9 +14838,7 @@
               "src": "4598:367:36",
               "statements": [
                 {
-                  "assignments": [
-                    6037
-                  ],
+                  "assignments": [6037],
                   "declarations": [
                     {
                       "constant": false,
@@ -15808,9 +15753,7 @@
               "src": "5401:397:36",
               "statements": [
                 {
-                  "assignments": [
-                    6103
-                  ],
+                  "assignments": [6103],
                   "declarations": [
                     {
                       "constant": false,
@@ -16742,9 +16685,7 @@
               "src": "6213:372:36",
               "statements": [
                 {
-                  "assignments": [
-                    6168
-                  ],
+                  "assignments": [6168],
                   "declarations": [
                     {
                       "constant": false,
@@ -17657,9 +17598,7 @@
               "src": "6997:423:36",
               "statements": [
                 {
-                  "assignments": [
-                    6239
-                  ],
+                  "assignments": [6239],
                   "declarations": [
                     {
                       "constant": false,
@@ -19045,9 +18984,7 @@
               "src": "8010:197:36",
               "statements": [
                 {
-                  "assignments": [
-                    6334
-                  ],
+                  "assignments": [6334],
                   "declarations": [
                     {
                       "constant": false,
@@ -19880,10 +19817,7 @@
                       "id": 6389,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        9222,
-                        9223
-                      ],
+                      "overloadedDeclarations": [9222, 9223],
                       "referencedDeclaration": 9223,
                       "src": "8551:7:36",
                       "typeDescriptions": {

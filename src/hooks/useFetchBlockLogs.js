@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from "react";
-import ethers from "ethers"
+import ethers from "ethers";
 
 const initialState = {
   status: "idle",
@@ -12,7 +12,7 @@ const iface = new ethers.utils.Interface(
 );
 
 export default function useFetchBlockLogs(blocknum) {
-    const [state, dispatch] = useReducer((state, action) => {
+  const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "FETCHING":
         return { ...initialState, status: "fetching" };
@@ -35,13 +35,13 @@ export default function useFetchBlockLogs(blocknum) {
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const logs = await provider.getLogs({
-                fromBlock: Number(blocknum),
-                toBlock: Number(blocknum),
-            });
-        const events = logs.map((log) => {
-            return iface.parseLog(log).args;
+          fromBlock: Number(blocknum),
+          toBlock: Number(blocknum),
         });
-        if (events === null) throw new Error("Events not found in this block")
+        const events = logs.map((log) => {
+          return iface.parseLog(log).args;
+        });
+        if (events === null) throw new Error("Events not found in this block");
         else if (cancelRequest) return;
         else dispatch({ type: "FETCHED", payload: events });
       } catch (error) {

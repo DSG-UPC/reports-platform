@@ -1,6 +1,6 @@
-import React from "react";
-import { BlockLink, Address } from "components";
-import ethers from "ethers";
+import React from "react"
+import { BlockLink, Address } from "components"
+import ethers from "ethers"
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableContainer,
   Paper,
   Typography,
-} from "@material-ui/core";
+} from "@material-ui/core"
 
 /**
  * Material-UI Table of proofs of some kind
@@ -18,7 +18,7 @@ import {
  * @param {array} props.data - Array of proofs
  */
 export default function ProofsTable({ name, data }) {
-  if (data.length === 0) return <></>;
+  if (data.length === 0) return <></>
   return (
     <>
       <Typography
@@ -34,24 +34,24 @@ export default function ProofsTable({ name, data }) {
           <TableHead>
             <TableRow>
               {Object.entries(data[0]).map((keyvalue) => {
-                const align = keyvalue[0] === "block" ? "left" : "right";
+                const align = keyvalue[0] === "block" ? "left" : "right"
                 return (
                   <TableCell align={align} key={keyvalue[0]}>
                     {keyvalue[0]}
                   </TableCell>
-                );
+                )
               })}
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((proof) => {
-              return <ProofRow key={proof.id} {...proof} />;
+              return <ProofRow key={proof.id} {...proof} />
             })}
           </TableBody>
         </Table>
       </TableContainer>
     </>
-  );
+  )
 }
 
 /**
@@ -64,17 +64,17 @@ function ProofRow(proof) {
       {Object.entries(proof).map((keyvalue) => {
         const align = keyvalue[0] === "block" ? "left" : "right"
         return (
-          <TableCell align={align}>
+          <TableCell key={`${keyvalue[0]}${keyvalue[1]}`} align={align}>
             {(() => {
-              if (keyvalue[0] === "block")
-                return <BlockLink blocknum={keyvalue[1]} />;
-              else if (ethers.utils.isAddress(keyvalue[1]))
-                return <Address value={keyvalue[1]} />;
-              else return keyvalue[1];
+              if (keyvalue[0] === "block") {
+                return <BlockLink blocknum={keyvalue[1]} />
+              } else if (ethers.utils.isAddress(keyvalue[1])) {
+                return <Address value={keyvalue[1]} />
+              } else return keyvalue[1]
             })()}
           </TableCell>
-        );
+        )
       })}
     </TableRow>
-  );
+  )
 }

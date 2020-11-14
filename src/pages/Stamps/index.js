@@ -1,6 +1,6 @@
-import React from "react";
-import { default as CheckStamp } from "./CheckStamp";
-import { default as CreateStamp } from "./CreateStamp";
+import React from "react"
+import * as CheckStamp from "./CheckStamp"
+import * as CreateStamp from "./CreateStamp"
 
 export default function ValidateReport() {
   return (
@@ -9,5 +9,5 @@ export default function ValidateReport() {
       <CreateStamp />
       <CheckStamp />
     </div>
-  );
+  )
 }

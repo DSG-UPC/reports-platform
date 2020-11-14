@@ -4,6 +4,5 @@ export { default as ProofsTables } from "./ProofsTables";
 export { default as BlockLink } from "./BlockLink";
 export { default as Address } from "./Address";
 export { default as NavBar } from "./NavBar";
-export { default as PDF } from "./PDF";
 export { default as TabPanel } from "./TabPanel";
 export { default as GridPaper } from "./GridPaper";

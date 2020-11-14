@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Grid, Paper} from "@material-ui/core"
+import { Box, Grid, Paper } from "@material-ui/core";
 
 export default function GridPaper({ children }) {
   return (

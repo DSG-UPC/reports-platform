@@ -4,34 +4,37 @@ import { Link, Text, View, StyleSheet } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
   container: {
+    minHeight: 50,
     flexDirection: "row",
     borderBottomWidth: 2,
     borderBottomColor: "#112131",
     borderBottomStyle: "solid",
     alignItems: "stretch",
+    paddingBottom: 5,
   },
   detailColumn: {
     flexDirection: "column",
-    flexGrow: 9
+    flexGrow: 9,
+    justifyContent: "space-between",
   },
   linkColumn: {
     flexDirection: "column",
     flexGrow: 2,
-    alignSelf: "flex-end",
-    justifySelf: "flex-end",
+    alignSelf: "flex-end", // abaix
+    justifySelf: "flex-end", // a la dreta
   },
   name: {
-    fontSize: 24,
+    fontSize: 20,
     // fontFamily: "Lato Bold",
   },
   subtitle: {
-    fontSize: 10,
-    justifySelf: "flex-end",
+    marginTop: 10,
+    fontSize: 14,
     // fontFamily: "Lato",
   },
   link: {
     // fontFamily: "Lato",
-    fontSize: 10,
+    fontSize: 12,
     color: "black",
     textDecoration: "none",
     alignSelf: "flex-end",
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Header({title, address}) {
+export default function Header({ title, address }) {
   return (
     <View style={styles.container}>
       <View style={styles.detailColumn}>

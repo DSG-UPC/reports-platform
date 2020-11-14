@@ -21,7 +21,7 @@ export default function CreateStamp() {
 
       stampProof.setProof(hash);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -37,14 +37,15 @@ export default function CreateStamp() {
         const content = e.target.result;
         keccak.update(content);
         const hash = "0x" + keccak.digest("hex");
-        setHash(hash); //most important thing
+        setHash(hash); // most important thing
       };
       reader.readAsText(file);
     } else if (
       evt.target.files[0] !== undefined &&
       evt.target.files[0].type !== "text/csv"
-    )
+    ) {
       alert("Only CSV");
+    }
   };
 
   return (
