@@ -33,7 +33,7 @@ export default function DeviceReport({ location }) {
     <>
       {fetch.status !== "fetched" && (
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={3} alignItems="center">
+          <Grid container spacing={3}>
             <Grid item>
               <TextField
                 value={input}
@@ -81,6 +81,11 @@ export default function DeviceReport({ location }) {
                   >
                     Download report
                   </PDFDownloadLink>
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button variant="contained" color="primary">
+                  Download Signed Report
                 </Button>
               </Grid>
               <Grid item>

@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Text } from "@react-pdf/renderer";
+import React from "react"
+import { View, StyleSheet, Text } from "@react-pdf/renderer"
 
 const styles = StyleSheet.create({
   item: {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 10,
   },
-});
+})
 
 export default function ListItem({ title, children }) {
   return (
@@ -25,5 +25,5 @@ export default function ListItem({ title, children }) {
         {children}
       </Text>
     </View>
-  );
+  )
 }

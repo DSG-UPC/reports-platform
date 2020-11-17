@@ -1,19 +1,19 @@
-import { Typography, Grid } from "@material-ui/core";
-import React from "react";
-import { getDeviceImpact } from "utils";
-import { GridPaper } from "components";
+import { Typography, Grid } from "@material-ui/core"
+import React from "react"
+import { getDeviceImpact } from "utils"
+import { GridPaper } from "components"
 
 function Data({ children }) {
   return (
     <Typography variant="body2" style={{ fontWeight: "bold" }}>
       {children}
     </Typography>
-  );
+  )
 }
 
 export default function DeviceImpact({ device }) {
-  const proofs = device.proofs;
-  const { firstUsage, extendedUsage, lastScore } = getDeviceImpact(device);
+  const proofs = device.proofs
+  const { firstUsage, extendedUsage, lastScore } = getDeviceImpact(device)
 
   return (
     <>
@@ -45,5 +45,5 @@ export default function DeviceImpact({ device }) {
         </GridPaper>
       </Grid>
     </>
-  );
+  )
 }

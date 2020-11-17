@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import { useFetchApi } from "hooks";
-import UserImpact from "./UserImpact";
-import { Grid, TextField, Button, InputAdornment } from "@material-ui/core";
-import ethers from "ethers";
+import React, { useState } from "react"
+import { useFetchApi } from "hooks"
+import UserImpact from "./UserImpact"
+import { Grid, TextField, Button, InputAdornment } from "@material-ui/core"
+import ethers from "ethers"
 
 export default function UserReport() {
-  const [input, setInput] = useState("");
-  const [helperText, setHelperText] = useState("");
-  const [address, setAddress] = useState("");
+  const [input, setInput] = useState("")
+  const [helperText, setHelperText] = useState("")
+  const [address, setAddress] = useState("")
   const url =
     address &&
-    `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/users/${address}`;
-  const fetch = useFetchApi(url);
+    `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/users/${address}`
+  const fetch = useFetchApi(url)
 
   const handleSubmit = (evt) => {
-    evt.preventDefault();
-    if (input === "") setHelperText("Required");
+    evt.preventDefault()
+    if (input === "") setHelperText("Required")
     else if (!ethers.utils.isAddress(`0x${input}`)) {
-      setHelperText("Invalid address");
+      setHelperText("Invalid address")
     } else {
-      setHelperText("");
-      setAddress(input);
+      setHelperText("")
+      setAddress(input)
     }
-  };
+  }
 
   return (
     <>
@@ -69,7 +69,7 @@ export default function UserReport() {
                   // variant="outlined"
                   color="secondary"
                   onClick={() => {
-                    setAddress("");
+                    setAddress("")
                   }}
                 >
                   Reset
@@ -80,5 +80,5 @@ export default function UserReport() {
         </>
       )}
     </>
-  );
+  )
 }

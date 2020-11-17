@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Grid, Paper } from "@material-ui/core";
+import React from "react"
+import { Box, Grid, Paper } from "@material-ui/core"
 
 export default function GridPaper({ children }) {
   return (
@@ -8,5 +8,5 @@ export default function GridPaper({ children }) {
         <Box p={1}>{children}</Box>
       </Paper>
     </Grid>
-  );
+  )
 }

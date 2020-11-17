@@ -1,9 +1,9 @@
-import React from "react";
-import { Box } from "@material-ui/core";
-import { ProofsTable } from "components";
+import React from "react"
+import { Box } from "@material-ui/core"
+import { ProofsTable } from "components"
 
 export default function ProofsTables({ data }) {
-  if (data.length === 0) return <></>;
+  if (data.length === 0) return <></>
   return (
     <>
       <Box mt={5}>
@@ -22,5 +22,5 @@ export default function ProofsTables({ data }) {
         <ProofsTable name="Transfer Proofs" data={data.transferproofs} />
       </Box>
     </>
-  );
+  )
 }

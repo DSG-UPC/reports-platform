@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-import { Link, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Link, Text, View, StyleSheet } from "@react-pdf/renderer"
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     justifySelf: "flex-end",
   },
-});
+})
 
 export default function Header({ title, address }) {
   return (
@@ -53,5 +53,5 @@ export default function Header({ title, address }) {
         <Link style={styles.link}>nilquerag@gmail.com</Link>
       </View>
     </View>
-  );
+  )
 }

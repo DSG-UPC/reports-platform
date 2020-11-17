@@ -5,18 +5,18 @@ import {
   Paper,
   Grid,
   makeStyles,
-} from "@material-ui/core";
-import React from "react";
-import { getUserImpact } from "utils";
-import { GridPaper } from "components";
-import { Link } from "react-router-dom";
+} from "@material-ui/core"
+import React from "react"
+import { getUserImpact } from "utils"
+import { GridPaper } from "components"
+import { Link } from "react-router-dom"
 
 function Data({ children }) {
   return (
     <Typography variant="body2" style={{ fontWeight: "bold" }}>
       {children}
     </Typography>
-  );
+  )
 }
 
 const useStyles = makeStyles({
@@ -32,11 +32,11 @@ const useStyles = makeStyles({
       textDecoration: "underline",
     },
   },
-});
+})
 
 export default function UserImpact({ devices }) {
-  const classes = useStyles();
-  const { totalExtendedUsage } = getUserImpact(devices);
+  const classes = useStyles()
+  const { totalExtendedUsage } = getUserImpact(devices)
   return (
     <>
       <Grid container spacing={3}>
@@ -79,7 +79,7 @@ export default function UserImpact({ devices }) {
                         </Link>
                       </Typography>
                     </ListItem>
-                  );
+                  )
                 })}
               </List>
             </div>
@@ -87,5 +87,5 @@ export default function UserImpact({ devices }) {
         </Grid>
       </Grid>
     </>
-  );
+  )
 }

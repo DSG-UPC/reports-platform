@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import { FileInput } from "components";
-import { Keccak } from "sha3";
-import { useFetchStamps } from "hooks";
+import React, { useState } from "react"
+import { FileInput } from "components"
+import { Keccak } from "sha3"
+import { useFetchStamps } from "hooks"
 
 export default function CheckStamp() {
-  const [hash, setHash] = useState("");
-  const [submittedHash, setSubmittedHash] = useState("");
-  const { stamps } = useFetchStamps(submittedHash);
+  const [hash, setHash] = useState("")
+  const [submittedHash, setSubmittedHash] = useState("")
+  const { stamps } = useFetchStamps(submittedHash)
 
   const handleSubmit = (evt) => {
-    evt.preventDefault();
-    setSubmittedHash(hash);
-  };
+    evt.preventDefault()
+    setSubmittedHash(hash)
+  }
 
   const handleChange = (evt) => {
     if (
       evt.target.files[0] !== undefined &&
       evt.target.files[0].type === "text/csv"
     ) {
-      const file = evt.target.files[0];
-      const keccak = new Keccak(256);
-      const reader = new FileReader();
+      const file = evt.target.files[0]
+      const keccak = new Keccak(256)
+      const reader = new FileReader()
       reader.onload = (e) => {
-        const content = e.target.result;
-        keccak.update(content);
-        const hash = "0x" + keccak.digest("hex");
-        setHash(hash); // most important thing
-      };
-      reader.readAsText(file);
+        const content = e.target.result
+        keccak.update(content)
+        const hash = "0x" + keccak.digest("hex")
+        setHash(hash) // most important thing
+      }
+      reader.readAsText(file)
     } else if (
       evt.target.files[0] !== undefined &&
       evt.target.files[0].type !== "text/csv"
     ) {
-      alert("Only CSV");
+      alert("Only CSV")
     }
-  };
+  }
 
   return (
     <>
@@ -61,5 +61,5 @@ export default function CheckStamp() {
         </div>
       )}
     </>
-  );
+  )
 }

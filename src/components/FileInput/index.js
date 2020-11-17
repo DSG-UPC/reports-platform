@@ -1,21 +1,35 @@
-const noop = () => {};
+const noop = () => {}
 
-export default function FileInput({ value, onChange = noop, ...rest }) {
+export default function FileInput({
+  value,
+  accept = ".csv",
+  onChange = noop,
+  text = "Click to choose a file",
+  ...rest
+}) {
   return (
-    <div>
-      <label style={{ textDecoration: "underline" }}>
-        Click to choose file{" "}
-        <input
-          {...rest}
-          style={{ display: "none" }}
-          type="file"
-          accept=".csv"
-          onChange={(evt) => {
-            onChange(evt);
-          }}
-        />
-      </label>
-      <br />
-    </div>
-  );
+    <label
+      style={{
+        display: "block",
+        maxWidth: "30%",
+        height: "30px",
+        margin: "auto",
+        padding: "50px 0",
+        textAlign: "center",
+        border: "1px dashed",
+        textDecoration: "underline",
+      }}
+    >
+      {text}
+      <input
+        {...rest}
+        style={{ display: "none" }}
+        type="file"
+        accept={accept}
+        onChange={(evt) => {
+          onChange(evt)
+        }}
+      />
+    </label>
+  )
 }

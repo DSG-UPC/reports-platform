@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   Typography,
   Grid,
@@ -6,22 +6,22 @@ import {
   makeStyles,
   Tabs,
   Tab,
-} from "@material-ui/core";
-import { TabPanel } from "components";
-import UserReport from "./user/UserReport";
-import DeviceReport from "./device/DeviceReport";
-require("dotenv").config();
+} from "@material-ui/core"
+import { TabPanel } from "components"
+import UserTab from "./UserTab"
+import DeviceTab from "./DeviceTab"
+require("dotenv").config()
 
 const useStyles = makeStyles({
   paperContainer: {
     marginTop: 50,
     padding: 30,
   },
-});
+})
 
 export default function ExportReport({ location }) {
-  const classes = useStyles();
-  const [tabValue, setTabValue] = useState(0);
+  const classes = useStyles()
+  const [tabValue, setTabValue] = useState(0)
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function ExportReport({ location }) {
             <Tabs
               value={tabValue}
               onChange={(evt, newValue) => {
-                setTabValue(newValue);
+                setTabValue(newValue)
               }}
             >
               <Tab label="Device" />
@@ -43,10 +43,10 @@ export default function ExportReport({ location }) {
           </Grid>
           <Grid item xs={12}>
             <TabPanel value={tabValue} index={0}>
-              <DeviceReport location={location} />
+              <DeviceTab location={location} />
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
-              <UserReport />
+              <UserTab />
             </TabPanel>
             <TabPanel value={tabValue} index={2}>
               General Data
@@ -55,5 +55,5 @@ export default function ExportReport({ location }) {
         </Grid>
       </Paper>
     </>
-  );
+  )
 }

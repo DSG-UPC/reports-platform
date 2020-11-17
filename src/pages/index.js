@@ -1,3 +1,5 @@
-export { default as ExportReport } from "./ExportReport";
-export { default as Stamps } from "./Stamps";
-export { default as Blocks } from "./Blocks";
+export { default as ExportReport } from "./ExportReport"
+export { default as Stamps } from "./Stamps/CreateStamps"
+export { default as Blocks } from "./Blocks"
+export { default as CreateStamps } from "./Stamps/CreateStamps"
+export { default as CheckStamps } from "./Stamps/CheckStamps"

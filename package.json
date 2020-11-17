@@ -26,7 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --fix",
-    "prettier": "prettier . --check"
+    "prettier": "prettier . --write"
   },
   "browserslist": {
     "production": [

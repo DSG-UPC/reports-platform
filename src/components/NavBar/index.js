@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   makeStyles,
   AppBar,
@@ -6,9 +6,9 @@ import {
   Typography,
   IconButton,
   Button,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import { Link } from "react-router-dom";
+} from "@material-ui/core"
+import MenuIcon from "@material-ui/icons/Menu"
+import { Link } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-}));
+}))
 
 export default function NavBar() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <AppBar position="static">
       <Toolbar>
@@ -43,13 +43,21 @@ export default function NavBar() {
         </Button>
         <Button color="inherit">
           <Link
-            to="/stamps"
+            to="/create-stamps"
             style={{ textDecoration: "none", color: "inherit" }}
           >
-            Stamps
+            Create Stamps
+          </Link>
+        </Button>
+        <Button color="inherit">
+          <Link
+            to="/check-stamps"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            Check Stamps
           </Link>
         </Button>
       </Toolbar>
     </AppBar>
-  );
+  )
 }
