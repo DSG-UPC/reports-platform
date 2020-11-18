@@ -1,41 +1,54 @@
 import React, { useState } from "react"
 import ethers from "ethers"
 import { Grid, TextField, Button, InputAdornment } from "@material-ui/core"
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer"
 import { useFetchApi } from "hooks"
 import { ProofsTables } from "components"
 import DeviceImpact from "./DeviceImpact"
-import PDF from "../../../PDF"
 require("dotenv").config()
 
 export default function DeviceReport({ location }) {
   const params = new URLSearchParams(location.search)
   const [input, setInput] = useState(params.get("device") || "")
   const [helperText, setHelperText] = useState("")
-  const [address, setAddress] = useState("")
-  const url =
-    address &&
-    `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/devices/${address}`
-  const fetch = useFetchApi(url)
+  const [isView, setIsView] = useState(true)
+  const [url, setUrl] = useState("")
+  const fetch = useFetchApi(url, isView ? "json" : "pdf")
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    if (input === "") setHelperText("Required")
-    else if (!ethers.utils.isAddress(`0x${input}`)) {
+    if (!ethers.utils.isAddress(`0x${input}`)) {
       setHelperText("Invalid address")
     } else {
       setHelperText("")
-      setAddress(input)
+      setIsView(true)
+      setUrl(
+        `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/api/devices/${input}`
+      )
     }
   }
 
+  const handleSubmitPdf = () => {
+    if (!ethers.utils.isAddress(`0x${input}`)) {
+      setHelperText("Invalid address")
+    } else {
+      setHelperText("")
+      setIsView(false)
+      setUrl(
+        `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/api/pdfs/devices/${input}`
+      )
+    }
+  }
+
+  console.log(fetch)
+
   return (
     <>
-      {fetch.status !== "fetched" && (
+      {fetch.status === ("idle" || "error") && (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid item>
               <TextField
+                required
                 value={input}
                 onChange={(evt) => setInput(evt.target.value)}
                 label="Device Address"
@@ -52,7 +65,16 @@ export default function DeviceReport({ location }) {
             </Grid>
             <Grid item>
               <Button type="submit" variant="contained" color="primary">
-                Search
+                View Online
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleSubmitPdf}
+              >
+                Download PDF
               </Button>
             </Grid>
           </Grid>
@@ -61,47 +83,32 @@ export default function DeviceReport({ location }) {
           </div>
         </form>
       )}
-      {fetch.status === "fetched" && (
+      {fetch.status === "fetching" && <p>Fetching...</p>}
+      {fetch.status === "fetched" && isView && (
         <>
-          {/* <div style={{ width: "100%", height: "100vh" }}>
-            <PDFViewer width="100%" height="100%">
-              <PDF title="Device Report" data={fetch.data} />
-            </PDFViewer>
-          </div> */}
           <DeviceImpact device={fetch.data.device} />
           <ProofsTables data={fetch.data.device.proofs} />
-          <div style={{ marginTop: 50 }}>
-            <Grid container spacing={3}>
-              <Grid item>
-                <Button variant="contained" color="primary">
-                  <PDFDownloadLink
-                    document={<PDF title="Device Report" data={fetch.data} />}
-                    fileName="report.pdf"
-                    style={{ color: "inherit", textDecoration: "inherit" }}
-                  >
-                    Download report
-                  </PDFDownloadLink>
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button variant="contained" color="primary">
-                  Download Signed Report
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  // variant="outlined"
-                  color="secondary"
-                  onClick={() => {
-                    setAddress("")
-                  }}
-                >
-                  Reset
-                </Button>
-              </Grid>
-            </Grid>
-          </div>
         </>
+      )}
+      {fetch.status === "fetched" && !isView && (
+        <p>Your report has been generated</p>
+      )}
+      {fetch.status === "fetched" && (
+        <div style={{ marginTop: 50 }}>
+          <Grid container spacing={3}>
+            <Grid item>
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={() => {
+                  setUrl("")
+                }}
+              >
+                Reset
+              </Button>
+            </Grid>
+          </Grid>
+        </div>
       )}
     </>
   )

@@ -6,7 +6,7 @@ const initialState = {
   data: [],
 }
 
-export default function useFetchApi(url, body, method = "GET") {
+export default function useFetchApi(url, type = "json") {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "FETCHING":
@@ -37,22 +37,19 @@ export default function useFetchApi(url, body, method = "GET") {
       dispatch({ type: "FETCHING" })
       console.log("fetching")
       try {
-        const response =
-          method === "GET"
-            ? await fetch(url)
-            : await fetch(url, {
-                method,
-                body,
-                headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json",
-                },
-              })
-
-        const res = await response.json()
-        if (res.status !== "success") throw new Error(res.message)
-        if (cancelRequest) return
-        dispatch({ type: "FETCHED", payload: res.data })
+        const response = await fetch(url)
+        if (type === "json") {
+          const res = await response.json()
+          if (res.status !== "success") throw new Error(res.message)
+          if (cancelRequest) return
+          dispatch({ type: "FETCHED", payload: res.data })
+        } else if (type === "pdf") {
+          const res = await response.blob()
+          const fileurl = URL.createObjectURL(res)
+          window.open(fileurl)
+          if (cancelRequest) return
+          dispatch({ type: "FETCHED", payload: null })
+        }
       } catch (error) {
         if (cancelRequest) return
         dispatch({ type: "FETCH_ERROR", payload: error.message })
