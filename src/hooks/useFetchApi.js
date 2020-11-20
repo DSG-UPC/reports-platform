@@ -4,6 +4,7 @@ const initialState = {
   status: "idle",
   error: null,
   data: [],
+  type: null,
 }
 
 export default function useFetchApi(url, type = "json") {
@@ -12,7 +13,12 @@ export default function useFetchApi(url, type = "json") {
       case "FETCHING":
         return { ...initialState, status: "fetching" }
       case "FETCHED":
-        return { ...initialState, status: "fetched", data: action.payload }
+        return {
+          ...initialState,
+          status: "fetched",
+          data: action.payload,
+          type: action.datatype,
+        }
       case "FETCH_ERROR":
         return { ...initialState, status: "error", error: action.payload }
       case "IDLE":
@@ -35,16 +41,16 @@ export default function useFetchApi(url, type = "json") {
 
     const fetchData = async () => {
       dispatch({ type: "FETCHING" })
-      console.log("fetching")
       try {
         const response = await fetch(url)
         if (type === "json") {
           const res = await response.json()
           if (res.status !== "success") throw new Error(res.message)
           if (cancelRequest) return
-          dispatch({ type: "FETCHED", payload: res.data })
+          dispatch({ type: "FETCHED", payload: res.data, datatype: "json" })
         } else if (type === "pdf") {
           const res = await response.blob()
+          // TODO: when fetch gives back an json response with an error
           const fileurl = URL.createObjectURL(res)
           window.open(fileurl)
           if (cancelRequest) return
@@ -52,7 +58,11 @@ export default function useFetchApi(url, type = "json") {
         }
       } catch (error) {
         if (cancelRequest) return
-        dispatch({ type: "FETCH_ERROR", payload: error.message })
+        dispatch({
+          type: "FETCH_ERROR",
+          payload: error.message,
+          datatype: "pdf",
+        })
       }
     }
 

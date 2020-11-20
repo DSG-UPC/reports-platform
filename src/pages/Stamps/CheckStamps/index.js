@@ -30,12 +30,7 @@ export default function CheckStamps() {
     else setError("No stamps found for this document")
   }
   return (
-    <div
-      style={{
-        margin: "50px auto",
-        textAlign: "center",
-      }}
-    >
+    <div>
       <Typography variant="h5">Check Stamps</Typography>
       <Box m={3}>
         <Typography variant="body1">

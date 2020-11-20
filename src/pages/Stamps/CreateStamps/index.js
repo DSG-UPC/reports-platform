@@ -65,12 +65,7 @@ export default function ValidateReport() {
 
   return (
     <>
-      <div
-        style={{
-          margin: "50px auto",
-          textAlign: "center",
-        }}
-      >
+      <div>
         <Typography variant="h5">Create Stamps</Typography>
         <Box m={3}>
           <Typography variant="body1">
