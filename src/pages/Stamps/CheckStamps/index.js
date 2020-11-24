@@ -1,13 +1,6 @@
 import { useState } from "react"
 import UploadReport from "../CreateStamps/UploadReport"
-import {
-  Button,
-  List,
-  Typography,
-  ListItem,
-  Box,
-  Divider,
-} from "@material-ui/core"
+import { Button, Typography, Box, Divider } from "@material-ui/core"
 export default function CheckStamps() {
   const [hash, setHash] = useState("")
   const [events, setEvents] = useState([])

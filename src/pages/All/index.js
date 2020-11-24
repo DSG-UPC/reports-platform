@@ -1,6 +1,5 @@
 import { Typography, Box, Divider, Button } from "@material-ui/core"
 import { useFetchApi } from "hooks"
-import PDF from "../../pdf/device"
 import { PDFDownloadLink } from "@react-pdf/renderer"
 import DLTImpact from "./DLTImpact"
 

@@ -12,7 +12,6 @@ import { getShortHex } from "utils"
 export default function StampReport({ hash, token, handleNext }) {
   const [email, setEmail] = useState("")
   const url = `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/stamp/create`
-  const [status, setStatus] = useState("idle")
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
@@ -25,9 +24,8 @@ export default function StampReport({ hash, token, handleNext }) {
     })
     const res = await response.json()
     if (res.status === "success") {
-      setStatus("success")
       handleNext()
-    } else setStatus("error")
+    }
   }
   return (
     <Paper

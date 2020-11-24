@@ -3,22 +3,11 @@ import {
   ListItem,
   Typography,
   Paper,
-  Grid,
   makeStyles,
 } from "@material-ui/core"
 import React from "react"
-import { getUserImpact } from "utils"
-import { GridPaper } from "components"
 import { Link } from "react-router-dom"
 import "./styles.css"
-
-function Data({ children }) {
-  return (
-    <Typography variant="body2" style={{ fontWeight: "bold" }}>
-      {children}
-    </Typography>
-  )
-}
 
 const useStyles = makeStyles({
   relatedDevices: {
