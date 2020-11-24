@@ -1,9 +1,11 @@
 import { Typography, Box, Divider, makeStyles, Button } from "@material-ui/core"
+import { PDFDownloadLink } from "@react-pdf/renderer"
 import { SearchBox } from "components"
 import { useFetchApiTriggered } from "hooks"
-import PDF from "../../PDF"
-import { PDFDownloadLink } from "@react-pdf/renderer"
+import PDF from "pdf/user"
 import UserImpact from "./UserImpact"
+
+const APIURL = process.env.REACT_APP_APIURL
 
 const useStyles = makeStyles((theme) => ({
   searchContainer: {
@@ -15,14 +17,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Devices({ location }) {
-  const { state: fetch, fetchData, resetState } = useFetchApiTriggered()
+  const { state: fetch, fetchData } = useFetchApiTriggered()
 
   const classes = useStyles()
   const handleSubmit = (evt, input) => {
     evt.preventDefault()
-    fetchData(
-      `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/api/users/${input}`
-    )
+    fetchData(`http://${APIURL}/api/users/${input}`)
   }
 
   return (
@@ -56,15 +56,15 @@ export default function Devices({ location }) {
               <UserImpact user={fetch.data.user} />
             </Box>
             <Box m={4}>
-              {/* <PDFDownloadLink
-                document={<PDF title="Device Report" data={fetch.data} />}
-                filename="devicereport.pdf"
+              <PDFDownloadLink
+                document={<PDF user={fetch.data.user} />}
+                fileName={`user_report_${fetch.data.user.address}.pdf`}
                 style={{ textDecoration: "none" }}
               >
                 <Button variant="contained" color="primary">
                   Download PDF
                 </Button>
-              </PDFDownloadLink> */}
+              </PDFDownloadLink>
             </Box>
           </>
         )}

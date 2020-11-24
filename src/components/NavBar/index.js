@@ -13,7 +13,7 @@ import {
   Divider,
 } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,12 +25,28 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  link: {
+    textDecoration: "none",
+    color: "inherit",
+  },
+  activelink: {
+    backgroundColor: "#ffc7bd",
+  },
+  listItem: {
+    backgroundColor: "inherit",
+  },
 }))
 
 function LinkListItem({ to, text, handleDrawerClose }) {
+  const classes = useStyles()
   return (
-    <Link to={to} style={{ textDecoration: "none", color: "inherit" }}>
+    <NavLink
+      to={to}
+      activeClassName={classes.activelink}
+      className={classes.link}
+    >
       <ListItem
+        className={classes.listItem}
         button
         onClick={() => {
           handleDrawerClose()
@@ -38,7 +54,7 @@ function LinkListItem({ to, text, handleDrawerClose }) {
       >
         <ListItemText primary={text} />
       </ListItem>
-    </Link>
+    </NavLink>
   )
 }
 

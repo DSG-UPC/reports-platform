@@ -3,8 +3,10 @@ import { SearchBox } from "components"
 import { useFetchApiTriggered } from "hooks"
 import DeviceImpact from "./DeviceImpact"
 import ProofsTables from "./ProofsTables"
-import PDF from "../../PDF"
+import PDF from "../../pdf/device"
 import { PDFDownloadLink } from "@react-pdf/renderer"
+
+const APIURL = process.env.REACT_APP_APIURL
 
 const useStyles = makeStyles((theme) => ({
   searchContainer: {
@@ -16,14 +18,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Devices({ location }) {
-  const { state: fetch, fetchData, resetState } = useFetchApiTriggered()
-
+  const { state: fetch, fetchData } = useFetchApiTriggered()
   const classes = useStyles()
+
   const handleSubmit = (evt, input) => {
     evt.preventDefault()
-    fetchData(
-      `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/api/devices/${input}`
-    )
+    fetchData(`http://${APIURL}/api/devices/${input}`)
   }
 
   return (
@@ -56,13 +56,16 @@ export default function Devices({ location }) {
             <Box m={4}>
               <DeviceImpact device={fetch.data.device} />
             </Box>
-            {/* <Box>
+            <Box>
               <ProofsTables data={fetch.data.device.proofs} />
-            </Box> */}
+            </Box>
             <Box m={4}>
+              {/* <PDFViewer width="100%" height="900px">
+                <PDF device={fetch.data.device}></PDF>
+              </PDFViewer> */}
               <PDFDownloadLink
-                document={<PDF title="Device Report" data={fetch.data} />}
-                filename="devicereport.pdf"
+                document={<PDF device={fetch.data.device} />}
+                fileName={`device_report_${fetch.data.device.address}.pdf`}
                 style={{ textDecoration: "none" }}
               >
                 <Button variant="contained" color="primary">
