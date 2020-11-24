@@ -42,9 +42,11 @@ export default function UserImpact({ user }) {
   const classes = useStyles()
   return (
     <>
-      <Typography variant="h6">Metrics</Typography>
+      <Typography variant="h6">Social Impact</Typography>
       <ul className="metrics-list">
-        <li>Base Usage: {user.impact.totalExtendedUsage} hours</li>
+        <li>
+          Total Extended Life-Time: {user.impact.totalExtendedUsage} hours
+        </li>
       </ul>
       <Paper elevation={4} className={classes.relatedDevices}>
         <Typography variant="body2">Related Devices</Typography>
