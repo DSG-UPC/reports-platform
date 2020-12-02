@@ -1,2 +1,2 @@
-export { default as useFetchApi } from "./useFetchApi"
-export { default as useFetchApiTriggered } from "./useFetchApiTriggered"
+export { default as useFetch } from "./useFetch"
+export { default as useFetchTriggered } from "./useFetchTriggered"

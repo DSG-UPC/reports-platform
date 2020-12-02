@@ -1,12 +1,12 @@
 import { Typography, Box, Divider, Button } from "@material-ui/core"
-import { useFetchApi } from "hooks"
+import { useFetch } from "hooks"
 import { PDFDownloadLink } from "@react-pdf/renderer"
 import DLTImpact from "./DLTImpact"
 
 const APIURL = process.env.REACT_APP_APIURL
 
 export default function All() {
-  const fetch = useFetchApi(`http://${APIURL}/api/devices/`)
+  const fetch = useFetch(`${APIURL}/api/devices/`)
 
   return (
     <>
@@ -22,7 +22,6 @@ export default function All() {
       </Box>
       <Divider />
       <Box m={4}>
-        {fetch.status === "fetching" && <p>Fetching...</p>}
         {fetch.status === "error" && <p>{fetch.error}</p>}
         {fetch.status === "fetched" && (
           <>
@@ -30,14 +29,14 @@ export default function All() {
               <DLTImpact data={fetch.data} />
             </Box>
             <Box m={4}>
-              <PDFDownloadLink
+              {/* <PDFDownloadLink
                 fileName="dlt_report.pdf"
                 style={{ textDecoration: "none" }}
               >
                 <Button variant="contained" color="primary">
                   Download PDF
                 </Button>
-              </PDFDownloadLink>
+              </PDFDownloadLink> */}
             </Box>
           </>
         )}

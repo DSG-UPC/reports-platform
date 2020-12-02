@@ -6,7 +6,7 @@ const initialState = {
   data: [],
 }
 
-export default function useFetchApi(url) {
+export default function useFetchTriggered() {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "FETCHING":
@@ -26,14 +26,14 @@ export default function useFetchApi(url) {
     }
   }, initialState)
 
-  const resetState = () => {
+  const reset = () => {
     dispatch({ type: "IDLE" })
   }
 
-  const fetchData = async (url) => {
+  const trigger = async (url, options) => {
     dispatch({ type: "FETCHING" })
     try {
-      const response = await fetch(url)
+      const response = await fetch(url, options)
       const res = await response.json()
       if (res.status !== "success") throw new Error(res.message)
       dispatch({ type: "FETCHED", payload: res.data, datatype: "json" })
@@ -46,5 +46,5 @@ export default function useFetchApi(url) {
     }
   }
 
-  return { state, fetchData, resetState }
+  return { fetch: state, trigger, reset }
 }

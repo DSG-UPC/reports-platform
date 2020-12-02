@@ -11,7 +11,7 @@ export default function FileInput({
     <label
       style={{
         display: "block",
-        maxWidth: "30%",
+        maxWidth: "200px",
         height: "30px",
         margin: "auto",
         padding: "50px 0",

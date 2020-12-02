@@ -1,7 +1,7 @@
-import { Typography, Box, Divider, makeStyles, Button } from "@material-ui/core"
 import { PDFDownloadLink } from "@react-pdf/renderer"
 import { SearchBox } from "components"
-import { useFetchApiTriggered } from "hooks"
+import { Typography, Box, Divider, makeStyles, Button } from "@material-ui/core"
+import { useFetchTriggered } from "hooks"
 import PDF from "pdf/user"
 import UserImpact from "./UserImpact"
 
@@ -17,12 +17,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Devices({ location }) {
-  const { state: fetch, fetchData } = useFetchApiTriggered()
+  const { fetch, trigger } = useFetchTriggered()
 
   const classes = useStyles()
   const handleSubmit = (evt, input) => {
     evt.preventDefault()
-    fetchData(`http://${APIURL}/api/users/${input}`)
+    trigger(`${APIURL}/api/users/${input}`)
   }
 
   return (

@@ -9,32 +9,21 @@ import {
 } from "@material-ui/core"
 import { getShortHex } from "utils"
 
-export default function StampReport({ hash, token, handleNext }) {
-  const [email, setEmail] = useState("")
-  const url = `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/stamp/create`
-
-  const handleSubmit = async (evt) => {
-    evt.preventDefault()
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify({ hash, token, email }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    const res = await response.json()
-    if (res.status === "success") {
-      handleNext()
-    }
-  }
+export default function StampReport({
+  hash,
+  url,
+  email,
+  setEmail,
+  handleSubmit,
+}) {
   return (
     <Paper
       variant="outlined"
-      style={{ padding: "30px", width: "300px", margin: "auto" }}
+      style={{ padding: "30px", maxWidth: "300px", margin: "auto" }}
     >
       <Typography variant="h6">Stamping Details</Typography>
       <Typography variant="subtitle1">Hash: 0x{getShortHex(hash)}</Typography>
-      <Typography variant="subtitle1">Token: 0x{getShortHex(token)}</Typography>
+      <Typography variant="subtitle1">Verification URL: {url}</Typography>
       <Divider style={{ margin: "20px 0px" }} />
       <form onSubmit={handleSubmit}>
         <Box m={3}>

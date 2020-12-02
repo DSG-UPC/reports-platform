@@ -5,7 +5,7 @@ export default function CheckStamps() {
   const [hash, setHash] = useState("")
   const [events, setEvents] = useState([])
   const [error, setError] = useState("")
-  const url = `http://${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/stamp/check`
+  const url = `${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/stamp/check`
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()

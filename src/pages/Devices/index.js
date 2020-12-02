@@ -1,10 +1,10 @@
-import { Typography, Box, Divider, makeStyles, Button } from "@material-ui/core"
-import { SearchBox } from "components"
-import { useFetchApiTriggered } from "hooks"
-import DeviceImpact from "./DeviceImpact"
-import ProofsTables from "./ProofsTables"
-import PDF from "../../pdf/device"
 import { PDFDownloadLink } from "@react-pdf/renderer"
+import { SearchBox } from "components"
+import { Typography, Box, Divider, makeStyles, Button } from "@material-ui/core"
+import { useFetchTriggered } from "hooks"
+import DeviceImpact from "./DeviceImpact"
+import PDF from "../../pdf/device"
+import ProofsTables from "./ProofsTables"
 
 const APIURL = process.env.REACT_APP_APIURL
 
@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Devices({ location }) {
-  const { state: fetch, fetchData } = useFetchApiTriggered()
+  const { fetch, trigger } = useFetchTriggered()
   const classes = useStyles()
 
   const handleSubmit = (evt, input) => {
     evt.preventDefault()
-    fetchData(`http://${APIURL}/api/devices/${input}`)
+    trigger(`${APIURL}/api/devices/${input}`)
   }
 
   return (

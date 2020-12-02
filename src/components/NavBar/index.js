@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     color: "inherit",
   },
   activelink: {
-    backgroundColor: "#ffc7bd",
+    color: "#1976d2",
   },
   listItem: {
     backgroundColor: "inherit",
@@ -89,7 +89,11 @@ export default function NavBar() {
         </Toolbar>
       </AppBar>
       <Drawer anchor="left" open={open} onClose={handleDrawerClose}>
-        <List style={{ minWidth: "150px" }}>
+        <List style={{ minWidth: "200px" }}>
+          <ListSubheader>
+            <Typography variant="h5">eReuse</Typography>
+          </ListSubheader>
+          <Divider />
           <ListSubheader>Reports</ListSubheader>
           <LinkListItem
             handleDrawerClose={handleDrawerClose}

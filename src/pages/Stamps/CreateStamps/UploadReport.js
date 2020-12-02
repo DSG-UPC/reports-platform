@@ -2,7 +2,7 @@ import { Keccak } from "sha3"
 import { FileInput } from "components"
 
 export default function UploadReport({ hash, setHash }) {
-  const handleChange = (evt) => {
+  const handleChange = async (evt) => {
     if (evt.target.files[0]?.type === "text/csv") {
       const file = evt.target.files[0]
       const keccak = new Keccak(256)
@@ -21,10 +21,8 @@ export default function UploadReport({ hash, setHash }) {
 
   return (
     <>
-      <form>
-        <FileInput value={hash} onChange={handleChange}></FileInput>
-      </form>
-      {hash !== "" && (
+      <FileInput value={hash} onChange={handleChange}></FileInput>
+      {hash && (
         <>
           <p>File hash:</p>
           <p style={{ overflowWrap: "break-word" }}> 0x{hash}</p>
