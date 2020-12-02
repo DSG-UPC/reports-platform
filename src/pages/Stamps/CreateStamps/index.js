@@ -9,7 +9,6 @@ import {
   Box,
   Divider,
 } from "@material-ui/core"
-import DoneIcon from "@material-ui/icons/Done"
 import UploadReport from "./UploadReport"
 import EnterURL from "./EnterURL"
 import StampReport from "./StampReport"

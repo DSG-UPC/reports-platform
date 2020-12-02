@@ -1,29 +1,26 @@
 import { useState } from "react"
 import UploadReport from "../CreateStamps/UploadReport"
 import { Button, Typography, Box, Divider } from "@material-ui/core"
+import { useFetchTriggered } from "hooks"
+
 export default function CheckStamps() {
   const [hash, setHash] = useState("")
-  const [events, setEvents] = useState([])
-  const [error, setError] = useState("")
-  const url = `${process.env.REACT_APP_APIURL}:${process.env.REACT_APP_APIPORT}/cache/stamp/check`
+  const { fetch, trigger, reset } = useFetchTriggered()
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
-
-    const response = await fetch(url, {
+    const options = {
       method: "POST",
       body: JSON.stringify({ hash }),
       headers: {
         "Content-Type": "application/json",
       },
-    })
-
-    const res = await response.json()
-    if (res.status === "success") setEvents(res.data.events)
-    else setError("No stamps found for this document")
+    }
+    trigger(`${process.env.REACT_APP_APIURL}/api/stamps/check`, options)
   }
+
   return (
-    <div>
+    <>
       <Typography variant="h5">Check Stamps</Typography>
       <Box m={3}>
         <Typography variant="body1">
@@ -34,7 +31,8 @@ export default function CheckStamps() {
         </Typography>
       </Box>
       <Divider style={{ marginBottom: "30px" }} />
-      {events.length === 0 && (
+
+      {(fetch.status === "idle" || fetch.status === "error") && (
         <form onSubmit={handleSubmit}>
           <UploadReport hash={hash} setHash={setHash} />
           <Button
@@ -45,11 +43,14 @@ export default function CheckStamps() {
           >
             Submit
           </Button>
-          {error && <p style={{ fontSize: "20px", color: "red" }}>{error}</p>}
+          {fetch.status === "error" && (
+            <p style={{ fontSize: "20px", color: "red" }}>{fetch.error}</p>
+          )}
         </form>
       )}
-      {events.length !== 0 && (
-        <div>
+      {fetch.status === "fetching" && <p>fetching...</p>}
+      {fetch.status === "fetched" && (
+        <>
           <Typography variant="h6" color="primary">
             Stamps found:
           </Typography>
@@ -59,12 +60,12 @@ export default function CheckStamps() {
               padding: 0,
             }}
           >
-            {events.map((stamp) => (
+            {fetch.data.stamps.map((stamp) => (
               <li
                 style={{
                   padding: "10px",
                 }}
-                key={stamp.i}
+                key={stamp.date}
               >
                 {stamp.date}
               </li>
@@ -72,14 +73,14 @@ export default function CheckStamps() {
           </ul>
           <Button
             onClick={(evt) => {
-              setEvents([])
+              reset()
             }}
             color="secondary"
           >
             Reset
           </Button>
-        </div>
+        </>
       )}
-    </div>
+    </>
   )
 }
