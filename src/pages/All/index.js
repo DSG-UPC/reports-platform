@@ -1,6 +1,6 @@
-import { Typography, Box, Divider, Button } from "@material-ui/core"
+import { Typography, Box, Divider } from "@material-ui/core"
 import { useFetch } from "hooks"
-import { PDFDownloadLink } from "@react-pdf/renderer"
+// import { PDFDownloadLink } from "@react-pdf/renderer"
 import DLTImpact from "./DLTImpact"
 
 const APIURL = process.env.REACT_APP_APIURL
