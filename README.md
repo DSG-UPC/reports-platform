@@ -1,3 +1,5 @@
+![ereports-platform CI/CD](https://github.com/DSG-UPC/reports-platform/workflows/ereports-platform%20CI/CD/badge.svg?branch=deploy)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
