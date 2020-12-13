@@ -6,7 +6,7 @@ const initialState = {
   data: [],
 }
 
-export default function useFetch(url) {
+export default function useFetch(url, options) {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "FETCHING":
@@ -30,15 +30,14 @@ export default function useFetch(url) {
     const fetchData = async () => {
       dispatch({ type: "FETCHING" })
       try {
-        const response = await fetch(url)
+        const response = await fetch(url, options)
         const res = await response.json()
         if (res.status !== "success") throw new Error(res.message)
-        dispatch({ type: "FETCHED", payload: res.data, datatype: "json" })
+        dispatch({ type: "FETCHED", payload: res.data })
       } catch (error) {
         dispatch({
           type: "FETCH_ERROR",
           payload: error.message,
-          datatype: "pdf",
         })
       }
     }
