@@ -14,7 +14,7 @@ export default function All() {
         <Typography variant="h5">DLT Report</Typography>
         <br />
         <Typography variant="body1">
-          The eReuse blockchain contains data about electronic devices.
+          The eReuse blockchain contains data about electronic devices!
         </Typography>
         <Typography variant="body1">
           Use this form to extract updated reports of the blockchain usage.

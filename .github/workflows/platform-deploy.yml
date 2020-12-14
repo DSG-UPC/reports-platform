@@ -1,4 +1,4 @@
-name: ereports-platform CI/CD
+name: CI/CD
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
           repository: nilquera/ereports-platform
-          tags: name/app:latest
+          tags: latest
 
   # deploy-server:
   #   run: connect with ssh
