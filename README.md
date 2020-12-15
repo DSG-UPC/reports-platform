@@ -1,4 +1,4 @@
-![ereports-platform CI/CD](https://github.com/DSG-UPC/reports-platform/workflows/ereports-platform%20CI/CD/badge.svg?branch=deploy)
+![CI/CD](https://github.com/DSG-UPC/reports-platform/workflows/CI/CD/badge.svg?branch=main&event=push)
 
 # Getting Started with Create React App
 
