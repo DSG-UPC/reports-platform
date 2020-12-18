@@ -1,9 +1,9 @@
 import {
   Paper,
   Typography,
-  Box,
+  // Box,
   Divider,
-  TextField,
+  // TextField,
   Button,
 } from "@material-ui/core"
 import { getShortHex } from "utils"
@@ -11,8 +11,8 @@ import { getShortHex } from "utils"
 export default function StampReport({
   hash,
   url,
-  email,
-  setEmail,
+  // email,
+  // setEmail,
   handleSubmit,
 }) {
   return (
