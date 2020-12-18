@@ -25,7 +25,7 @@ export default function StampReport({
       <Typography variant="subtitle1">Verification URL: {url}</Typography>
       <Divider style={{ margin: "20px 0px" }} />
       <form onSubmit={handleSubmit}>
-        <Box m={3}>
+        {/* <Box m={3}>
           <TextField
             required
             type="email"
@@ -40,7 +40,7 @@ export default function StampReport({
           <Typography>
             You will receive an email with the stamping details.
           </Typography>
-        </Box>
+        </Box> */}
         <div>
           <Button
             type="submit"
