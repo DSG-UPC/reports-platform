@@ -3,21 +3,22 @@ import { FileInput } from "components"
 
 export default function UploadReport({ hash, setHash }) {
   const handleChange = async (evt) => {
-    if (evt.target.files[0]?.type === "text/csv") {
-      const file = evt.target.files[0]
-      const sha3 = new SHA3(256)
-      const reader = new FileReader()
-      reader.onload = (e) => {
-        const content = e.target.result
-        console.log(content)
-        sha3.update(content)
-        const hash = sha3.digest("hex")
-        setHash(hash)
-      }
-      reader.readAsText(file)
-    } else if (evt.target.files[0]?.type !== "text/csv") {
-      alert("Only CSV")
+    // if (evt.target.files[0]?.type === "text/csv") {
+    // console.log(evt.target.files[0])
+    const file = evt.target.files[0]
+    const sha3 = new SHA3(256)
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const content = e.target.result
+      sha3.update(content)
+      const hash = sha3.digest("hex")
+      setHash(hash)
     }
+    reader.readAsText(file)
+    // } else if (evt.target.files[0]?.type !== "text/csv") {
+    //   console.log(evt.target.files[0])
+    //   alert("Only CSV")
+    // }
   }
 
   return (
