@@ -1,12 +1,22 @@
 import React from "react"
-import { Box, Typography } from "@material-ui/core"
+import { Box, makeStyles, Typography } from "@material-ui/core"
 import ProofsTable from "./ProofsTable"
 
+const useStyles = makeStyles({
+  title: {
+    marginTop: "30px",
+  },
+})
+
 export default function ProofsTables({ data }) {
+  const classes = useStyles()
+
   if (data.length === 0) return <></>
   return (
     <>
-      <Typography variant="h6">Proofs</Typography>
+      <Typography variant="h5" className={classes.title}>
+        Proofs
+      </Typography>
       <Box mt={2}>
         <ProofsTable name="Function Proofs" data={data.functionproofs} />
       </Box>

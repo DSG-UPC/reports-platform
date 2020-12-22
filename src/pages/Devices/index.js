@@ -1,11 +1,10 @@
 import { PDFDownloadLink } from "@react-pdf/renderer"
-import { SearchBox } from "components"
-import { Typography, Box, Divider, makeStyles, Button } from "@material-ui/core"
+import { SearchBox, Title } from "components"
+import { Box, makeStyles, Button } from "@material-ui/core"
 import { useFetchTriggered } from "hooks"
 import DeviceImpact from "./DeviceImpact"
 import PDF from "../../pdf/device"
-import ProofsTables from "./ProofsTables"
-
+import DevicesIcon from "@material-ui/icons/Devices"
 const APIURL = process.env.REACT_APP_APIURL
 
 const useStyles = makeStyles((theme) => ({
@@ -28,17 +27,12 @@ export default function Devices({ location }) {
 
   return (
     <>
-      <Box m={4}>
-        <Typography variant="h5">Device Report</Typography>
-        <br />
-        <Typography variant="body1">
-          The eReuse blockchain contains data about electronic devices.
-        </Typography>
-        <Typography variant="body1">
-          Use this form to extract updated device reports.
-        </Typography>
-      </Box>
-      <Divider />
+      <Title
+        text="Device Reports"
+        subtitle="
+          Use this form to extract updated device reports"
+        icon={<DevicesIcon style={{ fontSize: "40px" }} />}
+      />
       <Box m={4}>
         <div className={classes.searchContainer}>
           <SearchBox
@@ -48,34 +42,27 @@ export default function Devices({ location }) {
           />
         </div>
       </Box>
-      <Box m={4}>
-        {fetch.status === "fetching" && <p>Fetching...</p>}
-        {fetch.status === "error" && <p>{fetch.error}</p>}
-        {fetch.status === "fetched" && (
-          <>
-            <Box m={4}>
-              <DeviceImpact device={fetch.data.device} />
-            </Box>
-            <Box>
-              <ProofsTables data={fetch.data.device.proofs} />
-            </Box>
-            <Box m={4}>
-              {/* <PDFViewer width="100%" height="900px">
+      {fetch.status === "fetching" && <p>Fetching...</p>}
+      {fetch.status === "error" && <p>{fetch.error}</p>}
+      {fetch.status === "fetched" && (
+        <>
+          <DeviceImpact device={fetch.data.device} />
+          <Box m={4} style={{ textAlign: "center" }}>
+            {/* <PDFViewer width="100%" height="900px">
                 <PDF device={fetch.data.device}></PDF>
               </PDFViewer> */}
-              <PDFDownloadLink
-                document={<PDF device={fetch.data.device} />}
-                fileName={`device_report_${fetch.data.device.address}.pdf`}
-                style={{ textDecoration: "none" }}
-              >
-                <Button variant="contained" color="primary">
-                  Download PDF
-                </Button>
-              </PDFDownloadLink>
-            </Box>
-          </>
-        )}
-      </Box>
+            <PDFDownloadLink
+              document={<PDF device={fetch.data.device} />}
+              fileName={`device_report_${fetch.data.device.address}.pdf`}
+              style={{ textDecoration: "none" }}
+            >
+              <Button variant="outlined" color="primary">
+                Download PDF
+              </Button>
+            </PDFDownloadLink>
+          </Box>
+        </>
+      )}
     </>
   )
 }

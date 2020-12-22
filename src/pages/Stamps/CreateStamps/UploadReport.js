@@ -23,10 +23,10 @@ export default function UploadReport({ hash, setHash }) {
     <>
       <FileInput value={hash} onChange={handleChange}></FileInput>
       {hash && (
-        <>
+        <div style={{ textAlign: "center" }}>
           <p>File hash:</p>
           <p style={{ overflowWrap: "break-word" }}> 0x{hash}</p>
-        </>
+        </div>
       )}
     </>
   )

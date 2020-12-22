@@ -1,7 +1,9 @@
 import { useState } from "react"
 import UploadReport from "../CreateStamps/UploadReport"
-import { Button, Typography, Box, Divider } from "@material-ui/core"
+import { Button, Typography } from "@material-ui/core"
 import { useFetchTriggered } from "hooks"
+import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn"
+import { Title } from "components"
 
 export default function CheckStamps() {
   const [hash, setHash] = useState("")
@@ -21,28 +23,28 @@ export default function CheckStamps() {
 
   return (
     <>
-      <Typography variant="h5">Check Stamps</Typography>
-      <Box m={3}>
-        <Typography variant="body1">
+      <Title
+        text="Check Stamps"
+        subtitle="
           This page allows users to check if a report has been previously
           stamped with a valid pre-paid token. Data will be requested to our
-          server&apos;s API, which has permissioned access to the eReuse
-          blockchain.
-        </Typography>
-      </Box>
-      <Divider style={{ marginBottom: "30px" }} />
-
+          server's API, which has permissioned access to the eReuse
+          blockchain."
+        icon={<AssignmentTurnedInIcon style={{ fontSize: "40px" }} />}
+      />
       {(fetch.status === "idle" || fetch.status === "error") && (
         <form onSubmit={handleSubmit}>
           <UploadReport hash={hash} setHash={setHash} />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            style={{ marginTop: "20px" }}
-          >
-            Submit
-          </Button>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{ marginTop: "20px" }}
+            >
+              Submit
+            </Button>
+          </div>
           {fetch.status === "error" && (
             <p style={{ fontSize: "20px", color: "red" }}>{fetch.error}</p>
           )}
@@ -50,7 +52,7 @@ export default function CheckStamps() {
       )}
       {fetch.status === "fetching" && <p>fetching...</p>}
       {fetch.status === "fetched" && (
-        <>
+        <div style={{ textAlign: "center" }}>
           <Typography variant="h6" color="primary">
             Stamps found:
           </Typography>
@@ -79,7 +81,7 @@ export default function CheckStamps() {
           >
             Reset
           </Button>
-        </>
+        </div>
       )}
     </>
   )

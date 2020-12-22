@@ -1,19 +1,12 @@
 import { useState } from "react"
-import {
-  makeStyles,
-  Step,
-  Stepper,
-  StepLabel,
-  Typography,
-  Button,
-  Box,
-  Divider,
-} from "@material-ui/core"
+import { makeStyles, Step, Stepper, StepLabel, Button } from "@material-ui/core"
 import UploadReport from "./UploadReport"
 import EnterURL from "./EnterURL"
 import StampReport from "./StampReport"
 import ShowResult from "./ShowResult"
 import { useFetchTriggered } from "hooks"
+import GavelIcon from "@material-ui/icons/Gavel"
+import { Title } from "components"
 require("dotenv").config()
 
 const useStyles = makeStyles((theme) => ({
@@ -89,71 +82,64 @@ export default function ValidateReport() {
 
   return (
     <>
+      <Title
+        text="Create Stamps"
+        subtitle="
+          Stamping is the process of storing the hash of a report in a
+          blockchain. In this way the hash is permanently recorded on the
+          blockchain and linked to a particular point in time. This hash can
+          only be linked to the original content of the user's electronic
+          file, thus also linking that file with the particular timestamp."
+        icon={<GavelIcon style={{ fontSize: "40px" }} />}
+      />
+      <Stepper style={{ marginTop: "30px" }} activeStep={activeStep}>
+        {steps.map((label, index) => {
+          return (
+            <Step key={index}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          )
+        })}
+      </Stepper>
       <div>
-        <Typography variant="h5">Create Stamps</Typography>
-        <Box m={3}>
-          <Typography variant="body1">
-            Stamping is the process of storing the hash of a report in a
-            blockchain. In this way the hash is permanently recorded on the
-            blockchain and linked to a particular point in time. This hash can
-            only be linked to the original content of the user&apos;s electronic
-            file, thus also linking that file with the particular timestamp.
-          </Typography>
-        </Box>
-        <Divider style={{ marginBottom: "30px" }} />
-        <Stepper style={{ marginTop: "30px" }} activeStep={activeStep}>
-          {steps.map((label, index) => {
-            return (
-              <Step key={index}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            )
-          })}
-        </Stepper>
-        <div>
-          <div
-            style={{
-              margin: "20px auto 50px auto",
-              textAlign: "center",
-            }}
+        <div
+          style={{
+            margin: "20px auto 50px auto",
+            textAlign: "center",
+          }}
+        >
+          {activeStep === steps.length ? (
+            <ShowResult fetch={fetch} />
+          ) : (
+            getStepContent(activeStep)
+          )}
+        </div>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            disabled={activeStep === 0}
+            onClick={handleBack}
+            className={classes.button}
           >
-            {activeStep === steps.length ? (
-              <ShowResult fetch={fetch} />
-            ) : (
-              getStepContent(activeStep)
-            )}
-          </div>
-          <div>
+            Back
+          </Button>
+          {activeStep < 2 ? (
             <Button
-              disabled={activeStep === 0}
-              onClick={handleBack}
+              disabled={
+                (activeStep === 0 && hash === "") ||
+                (activeStep === 1 && url === "")
+              }
+              variant="contained"
+              color="primary"
+              onClick={handleNext}
               className={classes.button}
             >
-              Back
+              {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
-            {activeStep < 2 ? (
-              <Button
-                disabled={
-                  (activeStep === 0 && hash === "") ||
-                  (activeStep === 1 && url === "")
-                }
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
-            ) : (
-              <Button
-                variant="outlined"
-                color="secondary"
-                onClick={handleReset}
-              >
-                Reset
-              </Button>
-            )}
-          </div>
+          ) : (
+            <Button variant="outlined" color="secondary" onClick={handleReset}>
+              Reset
+            </Button>
+          )}
         </div>
       </div>
     </>

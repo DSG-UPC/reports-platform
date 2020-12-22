@@ -1,9 +1,10 @@
 import { PDFDownloadLink } from "@react-pdf/renderer"
-import { SearchBox } from "components"
-import { Typography, Box, Divider, makeStyles, Button } from "@material-ui/core"
+import { SearchBox, Title } from "components"
+import { Box, makeStyles, Button } from "@material-ui/core"
 import { useFetchTriggered } from "hooks"
 import PDF from "pdf/user"
 import UserImpact from "./UserImpact"
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd"
 
 const APIURL = process.env.REACT_APP_APIURL
 
@@ -27,17 +28,11 @@ export default function Devices({ location }) {
 
   return (
     <>
-      <Box m={4}>
-        <Typography variant="h5">User Report</Typography>
-        <br />
-        <Typography variant="body1">
-          Users of eReuse blockchain have ethereum addresses.
-        </Typography>
-        <Typography variant="body1">
-          Use this form to extract updated user reports.
-        </Typography>
-      </Box>
-      <Divider />
+      <Title
+        text="User Reports"
+        subtitle="Use this form to extract updated user reports"
+        icon={<AssignmentIndIcon style={{ fontSize: "40px" }} />}
+      />
       <Box m={4}>
         <div className={classes.searchContainer}>
           <SearchBox
@@ -47,28 +42,25 @@ export default function Devices({ location }) {
           />
         </div>
       </Box>
-      <Box m={4}>
-        {fetch.status === "fetching" && <p>Fetching...</p>}
-        {fetch.status === "error" && <p>{fetch.error}</p>}
-        {fetch.status === "fetched" && (
-          <>
-            <Box m={4}>
-              <UserImpact user={fetch.data.user} />
-            </Box>
-            <Box m={4}>
-              <PDFDownloadLink
-                document={<PDF user={fetch.data.user} />}
-                fileName={`user_report_${fetch.data.user.address}.pdf`}
-                style={{ textDecoration: "none" }}
-              >
-                <Button variant="contained" color="primary">
-                  Download PDF
-                </Button>
-              </PDFDownloadLink>
-            </Box>
-          </>
-        )}
-      </Box>
+      {fetch.status === "fetching" && <p>Fetching...</p>}
+      {fetch.status === "error" && <p>{fetch.error}</p>}
+      {fetch.status === "fetched" && (
+        <>
+          <UserImpact user={fetch.data.user} />
+
+          <Box m={4} style={{ textAlign: "center" }}>
+            <PDFDownloadLink
+              document={<PDF user={fetch.data.user} />}
+              fileName={`user_report_${fetch.data.user.address}.pdf`}
+              style={{ textDecoration: "none" }}
+            >
+              <Button variant="outlined" color="primary">
+                Download PDF
+              </Button>
+            </PDFDownloadLink>
+          </Box>
+        </>
+      )}
     </>
   )
 }

@@ -1,6 +1,5 @@
 import React from "react"
 import { Typography } from "@material-ui/core"
-import "./styles.css"
 
 export default function DLTImpact({ data }) {
   return (

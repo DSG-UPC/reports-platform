@@ -11,9 +11,10 @@ import {
   ListItemText,
   ListSubheader,
   Divider,
+  Button,
 } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,6 +71,11 @@ export default function NavBar() {
     setOpen(false)
   }
 
+  const history = useHistory()
+  const handleFAQClick = () => {
+    history.push("/faq")
+  }
+
   return (
     <>
       <AppBar position="static">
@@ -86,6 +92,9 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             eReuse Reports Platform
           </Typography>
+          <Button color="inherit" size="large" onClick={handleFAQClick}>
+            FAQ
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer anchor="left" open={open} onClose={handleDrawerClose}>
