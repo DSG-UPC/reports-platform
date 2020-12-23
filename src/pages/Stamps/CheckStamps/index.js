@@ -4,6 +4,7 @@ import { Button, Typography } from "@material-ui/core"
 import { useFetchTriggered } from "hooks"
 import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn"
 import { Title } from "components"
+import Alert from "@material-ui/lab/Alert"
 
 export default function CheckStamps() {
   const [hash, setHash] = useState("")
@@ -32,7 +33,7 @@ export default function CheckStamps() {
           blockchain."
         icon={<AssignmentTurnedInIcon style={{ fontSize: "40px" }} />}
       />
-      {(fetch.status === "idle" || fetch.status === "error") && (
+      {fetch.status === "idle" && (
         <form onSubmit={handleSubmit}>
           <UploadReport hash={hash} setHash={setHash} />
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -45,12 +46,24 @@ export default function CheckStamps() {
               Submit
             </Button>
           </div>
-          {fetch.status === "error" && (
-            <p style={{ fontSize: "20px", color: "red" }}>{fetch.error}</p>
-          )}
         </form>
       )}
       {fetch.status === "fetching" && <p>fetching...</p>}
+      {fetch.status === "error" && (
+        <div style={{ textAlign: "center" }}>
+          <Alert style={{ marginBottom: "20px" }} severity="error">
+            {fetch.error}
+          </Alert>
+          <Button
+            onClick={(evt) => {
+              reset()
+            }}
+            variant="outlined"
+          >
+            Reset
+          </Button>
+        </div>
+      )}
       {fetch.status === "fetched" && (
         <div style={{ textAlign: "center" }}>
           <Typography variant="h6" color="primary">
@@ -77,7 +90,7 @@ export default function CheckStamps() {
             onClick={(evt) => {
               reset()
             }}
-            color="secondary"
+            variant="outlined"
           >
             Reset
           </Button>
