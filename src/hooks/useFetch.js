@@ -30,7 +30,6 @@ export default function useFetch(url, options) {
     const fetchData = async () => {
       dispatch({ type: "FETCHING" })
       try {
-        console.log(url)
         const response = await fetch(url, options)
         const res = await response.json()
         if (res.status !== "success") throw new Error(res.message)

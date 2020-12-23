@@ -6,7 +6,6 @@ import {
   Document,
   StyleSheet,
   Font,
-  Link,
 } from "@react-pdf/renderer"
 import Header from "./Header"
 import Footer from "./Footer"
@@ -57,52 +56,50 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#000",
   },
-  link: {
-    margin: "5px 8px",
-    textDecoration: "none",
-    fontFamily: "Roboto",
-    fontSize: 12,
-    color: "#3f51b5",
+  tableHeaderCell: {
+    padding: 5,
+    fontSize: 11,
+  },
+  tableCell: {
+    padding: 5,
+    fontSize: 9,
   },
 })
 
 // Create Document Component
-export default function PDF({ user }) {
+export default function PDF({ all }) {
   return (
     <Document>
       <Page style={styles.page} size="A4">
-        <Header title="User Report" />
+        <Header title="DLT Report" />
         <View style={styles.main}>
-          <View style={[styles.section, styles.inline]}>
-            <Text style={styles.variable}>User Address: </Text>
-            <Text style={styles.value}>0x{user.address}</Text>
-          </View>
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Social Impact</Text>
-            <View style={styles.inline}>
-              <Text style={styles.variable}>Total Extended Life-Time: </Text>
-              <Text style={styles.value}>{user.impact.totalExtendedUsage}</Text>
-            </View>
+            <Element
+              variable="Total Extended Lifetime"
+              value={all.impact.totalExtendedUsage}
+            />
           </View>
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Related Devices</Text>
-            {user.devices.map((device, index) => {
-              return (
-                <Link
-                  style={styles.link}
-                  key={index}
-                  src={`${FRONTENDURL}/devices?search=${device.address}`}
-                >
-                  0x{device.address}
-                </Link>
-              )
-            })}
+            <Text style={styles.sectionTitle}>Proofs</Text>
+            {Object.entries(all.proofs).map((entry, index) => (
+              <Element key={index} variable={`#${entry[0]}`} value={entry[1]} />
+            ))}
           </View>
         </View>
-        <Footer url={`${FRONTENDURL}/users?search=${user.address}`} />
+        <Footer url={`${FRONTENDURL}/all`} />
       </Page>
     </Document>
   )
 }
 
 // https://material.io/design/typography/the-type-system.html#type-scale
+
+function Element({ variable, value }) {
+  return (
+    <View style={styles.inline}>
+      <Text style={styles.variable}>{variable}: </Text>
+      <Text style={styles.value}>{value}</Text>
+    </View>
+  )
+}

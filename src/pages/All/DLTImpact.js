@@ -1,24 +1,44 @@
-import React from "react"
-import { Typography } from "@material-ui/core"
+import {
+  List,
+  ListItem,
+  makeStyles,
+  Paper,
+  Typography,
+} from "@material-ui/core"
+
+const useStyles = makeStyles({
+  title: {
+    marginTop: "30px",
+  },
+  report: {
+    marginTop: "5%",
+    maxWidth: 600,
+    margin: "auto",
+    padding: "40px",
+    overflowX: "auto",
+  },
+})
 
 export default function DLTImpact({ data }) {
+  const classes = useStyles()
   return (
-    <>
-      <Typography variant="h6">Impact</Typography>
-      <ul className="metrics-list">
-        <li>
-          Total Extended Life-Time: {data.all.impact.totalExtendedUsage} hours
-        </li>
-      </ul>
-      <Typography variant="h6">Proofs</Typography>
-      <ul className="metrics-list">
-        <li>#Proofs: {data.all.proofs.total}</li>
-        <li>#Recycle Proofs: {data.all.proofs.recycleProofs}</li>
-        <li>#Function Proofs: {data.all.proofs.functionProofs}</li>
-        <li>#Data Wipe Proofs: {data.all.proofs.datawipeProofs}</li>
-        <li>#Reuse Proofs: {data.all.proofs.reuseProofs}</li>
-        <li>#Transfer Proofs: {data.all.proofs.transferProofs}</li>
-      </ul>
-    </>
+    <Paper variant="outlined" square className={classes.report}>
+      <Typography variant="h5">Social Impact</Typography>
+      <List>
+        <ListItem>
+          Total Extended Lifetime: {data.all.impact.totalExtendedUsage} hours
+        </ListItem>
+      </List>
+      <Typography variant="h5" className={classes.title}>
+        Proofs
+      </Typography>
+      <List>
+        {Object.entries(data.all.proofs).map((entry, index) => (
+          <ListItem key={index}>
+            #{entry[0]}: {entry[1]}
+          </ListItem>
+        ))}
+      </List>
+    </Paper>
   )
 }

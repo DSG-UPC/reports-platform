@@ -8,15 +8,15 @@ import {
   Font,
 } from "@react-pdf/renderer"
 import Header from "./Header"
-import {
-  Table,
-  TableHeader,
-  TableCell,
-  TableBody,
-  DataTableCell,
-} from "@david.kucsai/react-pdf-table"
+// import {
+//   Table,
+//   TableHeader,
+//   TableCell,
+//   TableBody,
+//   DataTableCell,
+// } from "@david.kucsai/react-pdf-table"
 import Footer from "./Footer"
-import { getShortHex } from "utils"
+// import { getShortHex } from "utils"
 
 const FRONTENDURL = process.env.REACT_APP_FRONTENDURL
 
@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
 
 // Create Document Component
 export default function PDF({ device }) {
-  console.log(device)
   return (
     <Document>
       <Page style={styles.page} size="A4">
@@ -87,19 +86,23 @@ export default function PDF({ device }) {
           </View>
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Social Impact</Text>
+            <Element variable="Base Usage" value={device.impact.firstUsage} />
             <Element
-              variable="First Life-Time"
-              value={device.impact.firstUsage}
-            />
-            <Element
-              variable="Extended Life-Time"
+              variable="Extended Lifetime"
               value={device.impact.extendedUsage}
             />
             <Element variable="Last Score" value={device.impact.lastScore} />
           </View>
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Proofs</Text>
-            <Tables proofs={device.proofs} />
+            {Object.entries(device.proofs).map((entry, index) => (
+              <Element
+                key={index}
+                variable={`#${entry[0]}`}
+                value={entry[1].length}
+              />
+            ))}
+            {/* <Tables proofs={device.proofs} /> */}
           </View>
         </View>
         <Footer url={`${FRONTENDURL}/devices?search=${device.address}`} />
@@ -119,64 +122,64 @@ function Element({ variable, value }) {
   )
 }
 
-function Tables({ proofs }) {
-  return (
-    <>
-      <Text style={{ fontSize: 15 }}>Function Proofs</Text>
-      <Table data={proofs.functionproofs}>
-        <TableHeader>
-          <TableCell weighting={0.1} style={styles.tableHeaderCell}>
-            block
-          </TableCell>
-          <TableCell weighting={0.2} style={styles.tableHeaderCell}>
-            useraddress
-          </TableCell>
-          <TableCell weighting={0.2} style={styles.tableHeaderCell}>
-            deviceaddress
-          </TableCell>
-          <TableCell weighting={0.2} style={styles.tableHeaderCell}>
-            diskusage
-          </TableCell>
-          <TableCell weighting={0.1} style={styles.tableHeaderCell}>
-            score
-          </TableCell>
-          <TableCell weighting={0.2} style={styles.tableHeaderCell}>
-            algorithmversion
-          </TableCell>
-        </TableHeader>
-        <TableBody>
-          <DataTableCell
-            style={styles.tableCell}
-            weighting={0.1}
-            getContent={(r) => r.block}
-          />
-          <DataTableCell
-            style={styles.tableCell}
-            weighting={0.2}
-            getContent={(r) => getShortHex(r.useraddress)}
-          />
-          <DataTableCell
-            style={styles.tableCell}
-            weighting={0.2}
-            getContent={(r) => getShortHex(r.deviceaddress)}
-          />
-          <DataTableCell
-            style={styles.tableCell}
-            weighting={0.2}
-            getContent={(r) => r.score}
-          />
-          <DataTableCell
-            style={styles.tableCell}
-            weighting={0.1}
-            getContent={(r) => r.diskusage}
-          />
-          <DataTableCell
-            style={styles.tableCell}
-            weighting={0.2}
-            getContent={(r) => r.algorithmversion}
-          />
-        </TableBody>
-      </Table>
-    </>
-  )
-}
+// function Tables({ proofs }) {
+//   return (
+//     <>
+//       <Text style={{ fontSize: 15 }}>Function Proofs</Text>
+//       <Table data={proofs.functionproofs}>
+//         <TableHeader>
+//           <TableCell weighting={0.1} style={styles.tableHeaderCell}>
+//             block
+//           </TableCell>
+//           <TableCell weighting={0.2} style={styles.tableHeaderCell}>
+//             useraddress
+//           </TableCell>
+//           <TableCell weighting={0.2} style={styles.tableHeaderCell}>
+//             deviceaddress
+//           </TableCell>
+//           <TableCell weighting={0.2} style={styles.tableHeaderCell}>
+//             diskusage
+//           </TableCell>
+//           <TableCell weighting={0.1} style={styles.tableHeaderCell}>
+//             score
+//           </TableCell>
+//           <TableCell weighting={0.2} style={styles.tableHeaderCell}>
+//             algorithmversion
+//           </TableCell>
+//         </TableHeader>
+//         <TableBody>
+//           <DataTableCell
+//             style={styles.tableCell}
+//             weighting={0.1}
+//             getContent={(r) => r.block}
+//           />
+//           <DataTableCell
+//             style={styles.tableCell}
+//             weighting={0.2}
+//             getContent={(r) => getShortHex(r.useraddress)}
+//           />
+//           <DataTableCell
+//             style={styles.tableCell}
+//             weighting={0.2}
+//             getContent={(r) => getShortHex(r.deviceaddress)}
+//           />
+//           <DataTableCell
+//             style={styles.tableCell}
+//             weighting={0.2}
+//             getContent={(r) => r.score}
+//           />
+//           <DataTableCell
+//             style={styles.tableCell}
+//             weighting={0.1}
+//             getContent={(r) => r.diskusage}
+//           />
+//           <DataTableCell
+//             style={styles.tableCell}
+//             weighting={0.2}
+//             getContent={(r) => r.algorithmversion}
+//           />
+//         </TableBody>
+//       </Table>
+//     </>
+//   )
+// }

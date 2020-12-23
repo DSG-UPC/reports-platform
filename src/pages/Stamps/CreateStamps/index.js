@@ -23,9 +23,10 @@ function getSteps() {
   return ["Upload a Report", "Enter a Verification URL", "Stamp Report"]
 }
 
-export default function ValidateReport() {
+export default function CreateStamps({ location }) {
+  const params = new URLSearchParams(location.search)
   const [hash, setHash] = useState("")
-  const [url, setUrl] = useState("")
+  const [url, setUrl] = useState(params.get("url") || "")
   const [email, setEmail] = useState("")
   const [activeStep, setActiveStep] = useState(0)
   const classes = useStyles()

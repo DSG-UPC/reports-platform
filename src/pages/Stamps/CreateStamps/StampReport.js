@@ -18,7 +18,12 @@ export default function StampReport({
   return (
     <Paper
       variant="outlined"
-      style={{ padding: "30px", maxWidth: "300px", margin: "auto" }}
+      style={{
+        padding: "30px",
+        maxWidth: "300px",
+        margin: "auto",
+        overflowWrap: "break-word",
+      }}
     >
       <Typography variant="h6">Stamping Details</Typography>
       <Typography variant="subtitle1">Hash: 0x{getShortHex(hash)}</Typography>

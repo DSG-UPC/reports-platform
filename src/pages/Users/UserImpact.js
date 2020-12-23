@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     marginTop: "30px",
   },
   report: {
-    marginTop: "10%",
+    marginTop: "5%",
     maxWidth: 600,
     margin: "auto",
     padding: "40px",
