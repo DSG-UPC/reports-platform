@@ -1,8 +1,12 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Ereports",
+  "name": "EReuse Reports App",
   "icons": [
-
+    {
+      "src": "favicon.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }
   ],
   "start_url": ".",
   "display": "standalone",
