@@ -91,7 +91,13 @@ export default function CreateStamps({ location }) {
           blockchain and linked to a particular point in time. This hash can
           only be linked to the original content of the user's electronic
           file, thus also linking that file with the particular timestamp."
-        icon={<GavelIcon style={{ fontSize: "40px" }} />}
+        icon={
+          <GavelIcon
+            style={{
+              fontSize: "calc(30px + 1vw)",
+            }}
+          />
+        }
       />
       <Stepper style={{ marginTop: "30px" }} activeStep={activeStep}>
         {steps.map((label, index) => {

@@ -31,7 +31,13 @@ export default function CheckStamps() {
           stamped with a valid pre-paid token. Data will be requested to our
           server's API, which has permissioned access to the eReuse
           blockchain."
-        icon={<AssignmentTurnedInIcon style={{ fontSize: "40px" }} />}
+        icon={
+          <AssignmentTurnedInIcon
+            style={{
+              fontSize: "calc(30px + 1vw)",
+            }}
+          />
+        }
       />
       {fetch.status === "idle" && (
         <form onSubmit={handleSubmit}>

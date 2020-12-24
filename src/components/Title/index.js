@@ -7,9 +7,11 @@ export default function Title({ text, icon, subtitle }) {
         <Box display="flex" alignItems="center">
           {icon}
           <Typography
-            style={{ marginLeft: "10px" }}
+            style={{
+              marginLeft: "10px",
+              fontSize: "calc(20px + 1vw)",
+            }}
             component="span"
-            variant="h3"
           >
             {text}
           </Typography>

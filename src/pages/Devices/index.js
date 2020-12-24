@@ -31,7 +31,13 @@ export default function Devices({ location }) {
         text="Device Reports"
         subtitle="
           Use this form to extract updated device reports"
-        icon={<DevicesIcon style={{ fontSize: "40px" }} />}
+        icon={
+          <DevicesIcon
+            style={{
+              fontSize: "calc(30px + 1vw)",
+            }}
+          />
+        }
       />
       <Box m={4}>
         <div className={classes.searchContainer}>
@@ -42,8 +48,12 @@ export default function Devices({ location }) {
           />
         </div>
       </Box>
-      {fetch.status === "fetching" && <p>Fetching...</p>}
-      {fetch.status === "error" && <p>{fetch.error}</p>}
+      {fetch.status === "fetching" && (
+        <p style={{ textAlign: "center" }}>Fetching...</p>
+      )}
+      {fetch.status === "error" && (
+        <p style={{ textAlign: "center" }}>{fetch.error}</p>
+      )}
       {fetch.status === "fetched" && (
         <>
           <DeviceImpact device={fetch.data.device} />

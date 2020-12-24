@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    fontSize: "calc(15px + .5vw)",
   },
   link: {
     textDecoration: "none",
@@ -89,7 +90,7 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography className={classes.title}>
             eReuse Reports Platform
           </Typography>
           <Button color="inherit" size="large" onClick={handleFAQClick}>

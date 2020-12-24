@@ -1,11 +1,11 @@
 import DoneIcon from "@material-ui/icons/Done"
-import { Typography } from "@material-ui/core"
+import { CircularProgress, Typography } from "@material-ui/core"
 import { Link } from "react-router-dom"
 
 export default function ShowResult({ fetch }) {
   return (
     <>
-      {fetch.status === "fetching" && <p>Please, wait a second...</p>}
+      {fetch.status === "fetching" && <CircularProgress />}
       {fetch.status === "fetched" && (
         <>
           <DoneIcon style={{ color: "#66bb6a", fontSize: "70px" }} />

@@ -31,7 +31,13 @@ export default function Devices({ location }) {
       <Title
         text="User Reports"
         subtitle="Use this form to extract updated user reports"
-        icon={<AssignmentIndIcon style={{ fontSize: "40px" }} />}
+        icon={
+          <AssignmentIndIcon
+            style={{
+              fontSize: "calc(30px + 1vw)",
+            }}
+          />
+        }
       />
       <Box m={4}>
         <div className={classes.searchContainer}>
@@ -42,8 +48,12 @@ export default function Devices({ location }) {
           />
         </div>
       </Box>
-      {fetch.status === "fetching" && <p>Fetching...</p>}
-      {fetch.status === "error" && <p>{fetch.error}</p>}
+      {fetch.status === "fetching" && (
+        <p style={{ textAlign: "center" }}>Fetching...</p>
+      )}
+      {fetch.status === "error" && (
+        <p style={{ textAlign: "center" }}>{fetch.error}</p>
+      )}
       {fetch.status === "fetched" && (
         <>
           <UserImpact user={fetch.data.user} />

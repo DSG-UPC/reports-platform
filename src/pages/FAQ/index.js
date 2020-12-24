@@ -16,7 +16,13 @@ export default function FAQ() {
     <div>
       <Title
         text="FAQs"
-        icon={<DescriptionOutlinedIcon style={{ fontSize: "40px" }} />}
+        icon={
+          <DescriptionOutlinedIcon
+            style={{
+              fontSize: "calc(30px + 1vw)",
+            }}
+          />
+        }
       />
 
       <Question q="Where does the data come from?">

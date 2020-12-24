@@ -15,10 +15,20 @@ export default function All() {
     <>
       <Title
         text="DLT Reports"
-        icon={<AssessmentIcon style={{ fontSize: "40px" }} />}
+        icon={
+          <AssessmentIcon
+            style={{
+              fontSize: "calc(30px + 1vw)",
+            }}
+          />
+        }
       />
-      {fetch.status === "fetching" && <p>Fetching...</p>}
-      {fetch.status === "error" && <p>{fetch.error}</p>}
+      {fetch.status === "fetching" && (
+        <p style={{ textAlign: "center" }}>Fetching...</p>
+      )}
+      {fetch.status === "error" && (
+        <p style={{ textAlign: "center" }}>{fetch.error}</p>
+      )}
       {fetch.status === "fetched" && (
         <>
           <DLTImpact data={fetch.data} />
