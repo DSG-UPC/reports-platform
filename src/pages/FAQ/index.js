@@ -42,8 +42,10 @@ export default function FAQ() {
         </p>
       </Question>
       <Question important q="How is Device impact computed?">
-        Device impact is computed from two different perspectives: social and
-        environment benefits.
+        Computing the real impact of a device is a harsh and frequently
+        unaccurate task. We avoid giving final indicators because they would be
+        opinionated. Instead, we focus on giving enough device information so
+        that anyone can compute indicators on their own.
         <ul>
           <li>
             <h3>Social benefits</h3>
@@ -54,13 +56,12 @@ export default function FAQ() {
               had a larger life-time than it was originally expected.
             </p>
             <p>
-              Proofs are data objects stored in the blockchain and linked to a
-              particular device. Reuse proofs give us information about when a
-              device has been reused. Also, Function proofs store the device
-              usage at a particular time. With this data, it is very easy to
-              compute the extended lifetime of a reused device.
+              Proofs are data objects stored in our blockchain and linked to a
+              particular device. In particular, reuse proofs give us information
+              about when a device has been reused. Also, Function proofs store
+              the device usage at a particular time.
             </p>
-            <p>For example, if a device has de following proofs:</p>
+            <p>Then, if a device has the following proofs:</p>
             <ul>
               <li>Function proof 1 (300 hours of usage) + Reuse Proof</li>
               <li>Function proof 2 (400 hours of usage)</li>
@@ -73,7 +74,12 @@ export default function FAQ() {
           </li>
           <li>
             <h3>Environmental benefits</h3>
-            <p>asd</p>
+            <p>
+              Life-cycle assessment (LCA) is a methodology for assessing
+              environmental impacts associated with all the stages of the
+              life-cycle of a device. This platform gives device hardware
+              details to facilitate LCA.
+            </p>
           </li>
         </ul>
       </Question>
